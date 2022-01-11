@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './UsersStyle.css'
+import './UserStyle.css'
 
-const UsersComponent = (props) => {
+const UserComponent = (props) => {
     let {properties: {name, id, email, address: {street, city}}} = props;
     return (
         <div className={'wrap'}>
@@ -15,4 +15,4 @@ const UsersComponent = (props) => {
     );
 };
 
-export default UsersComponent;
+export default UserComponent;

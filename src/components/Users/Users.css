@@ -1,0 +1,14 @@
+.users_wrap {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.user_menu {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 40%;
+
+}

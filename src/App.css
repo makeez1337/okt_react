@@ -3,55 +3,11 @@
     height: 100%;
 }
 
-.users_wrap {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 
-.user_menu {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 40%;
 
-}
-
-.user_and_posts_wrap {
+.users_and_posts_wrap {
     display: flex;
 }
 
-.posts_menu {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    width: 60%;
-    flex-direction: column;
-}
 
-.posts_wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-}
-
-.comments_menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.comments_wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.header_style {
-    background-color: violet;
-    width: 100%;
-    text-align: center;
-    margin-top: 5px;
-}
