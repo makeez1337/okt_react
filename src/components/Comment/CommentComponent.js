@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './CommentStyle.css';
+import '../Comment/CommentStyle.css';
 
 const CommentComponent = (props) => {
     const {properties: {name, email, body}} = props;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './UserStyle.css'
+import '../User/UserStyle.css'
 
 const UserComponent = (props) => {
     let {properties: {name, id, email, address: {street, city}}} = props;

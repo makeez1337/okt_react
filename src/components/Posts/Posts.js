@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import PostComponent from './PostComponent'
+import PostComponent from '../Post/PostComponent'
 import {getPosts} from '../../services/getApi'
 import './Posts.css'
 

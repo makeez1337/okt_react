@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './PostStyle.css';
+import '../Post/PostStyle.css';
 
 const PostComponent = (props) => {
     const {properties: {title,body}} = props;

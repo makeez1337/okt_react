@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import UserComponent from './UserComponent'
+import UserComponent from '../User/UserComponent'
 import {getUsers} from '../../services/getApi'
 import './Users.css'
 
