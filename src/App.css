@@ -1,38 +1,57 @@
-.App {
-  text-align: center;
+#main_page {
+    background: url('https://blackgold.sa/wp-content/uploads/2018/02/2560x1440-blue-abstract-noise-free-website-background-image.jpg') center/cover no-repeat;
+    height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.users_wrap {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.user_menu {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 40%;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.user_and_posts_wrap {
+    display: flex;
 }
 
-.App-link {
-  color: #61dafb;
+.posts_menu {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 60%;
+    flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.posts_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.comments_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comments_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header_style {
+    background-color: violet;
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
 }

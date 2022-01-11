@@ -1,0 +1,18 @@
+.comment_style {
+    background-color: cornflowerblue;
+    width: 50%;
+    border: 2px solid;
+    margin-top: 5px;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+.email_color {
+    color: greenyellow;
+}
+
+.body_color {
+    color: pink;
+}

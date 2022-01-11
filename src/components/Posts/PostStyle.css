@@ -1,0 +1,13 @@
+.post_style {
+    background-color: cornflowerblue;
+    margin-top: 10px;
+    width: 70%;
+    border: 2px solid;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.title_color {
+    color: indigo;
+    font-size: 15px;
+}
