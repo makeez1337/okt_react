@@ -18,15 +18,14 @@ const FilterForm = (props) => {
         const name = form.name;
         const username = form.username;
         const email = form.email;
-        let arrayWithRes = [];
 
-        users.map((value) => {
+        const filteredUsers = users.filter((value) => {
             if (value.name.includes(name) && value.username.includes(username) && value.email.includes(email)) {
-                arrayWithRes.push(value);
+                return value;
             }
-        })
-
-        setUsers(arrayWithRes);
+            return false;
+        });
+        setUsers(filteredUsers);
     }
 
     const clearFilters = () => {
