@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './UserDetails.css'
+import {postService} from "../../services/post.service";
+import Post from "../Post/Post";
 
 const UserDetails = (props) => {
     const {
@@ -7,29 +9,51 @@ const UserDetails = (props) => {
         setUser
     } = props;
 
-    return (
-        <div className={'detail_style'}>
-            <button onClick={() => {
-                setUser(null)
-            }}>HIDE DETAILS
-            </button>
-            <p className={'detail_text_style'}>id : {id}</p>
-            <p className={'detail_text_style'}>Name : {name}</p>
-            <p className={'detail_text_style'}>Username : {username}</p>
-            <p className={'detail_text_style'}>Email : {email}</p>
-            <p className={'detail_text_style color_red'}>Address:</p>
-            <p className={'detail_text_style'}>Street : {street}</p>
-            <p className={'detail_text_style'}>Suite : {suite}</p>
-            <p className={'detail_text_style'}>City : {city}</p>
-            <p className={'detail_text_style'}>Zipcode : {zipcode}</p>
-            <p className={'detail_text_style color_red'}>Geo:</p>
-            <p className={'detail_text_style'}>Lat : {lat}</p>
-            <p className={'detail_text_style'}>Lng {lng}</p>
-            <button onClick={() => {
+    const [posts, setPosts] = useState([]);
 
-            }}
-                    className={'btn_style'}>GET POSTS
-            </button>
+
+    return (
+        <div>
+            <div className={'detail_style'}>
+                <button onClick={() => {
+                    setUser(null)
+                }}>HIDE DETAILS
+                </button>
+                <p className={'detail_text_style'}>id : {id}</p>
+                <p className={'detail_text_style'}>Name : {name}</p>
+                <p className={'detail_text_style'}>Username : {username}</p>
+                <p className={'detail_text_style'}>Email : {email}</p>
+                <p className={'detail_text_style color_red'}>Address:</p>
+                <p className={'detail_text_style'}>Street : {street}</p>
+                <p className={'detail_text_style'}>Suite : {suite}</p>
+                <p className={'detail_text_style'}>City : {city}</p>
+                <p className={'detail_text_style'}>Zipcode : {zipcode}</p>
+                <p className={'detail_text_style color_red'}>Geo:</p>
+                <p className={'detail_text_style'}>Lat : {lat}</p>
+                <p className={'detail_text_style'}>Lng {lng}</p>
+                <button onClick={() => {
+                    console.log(posts);
+                    return postService.getAll()
+                        .then(value => {
+                            const filteredArray = value.filter((value) => {
+                                return value.userId === id;
+
+                            });
+                            setPosts(filteredArray);
+
+                        });
+                }}
+                        className={'btn_style'}>GET POSTS
+                </button>
+            </div>
+            <div className={'posts_wrap'}>
+                {
+                    posts.length !== 0 && posts.map(value => {
+                        if (value.userId !== id) setPosts([]);
+                        return <Post item={value} key={value.id}/>
+                    })
+                }
+            </div>
         </div>
     );
 };

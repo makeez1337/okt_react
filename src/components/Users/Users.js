@@ -6,7 +6,6 @@ import UserDetails from "../UserDetails/UserDetails";
 import './Users.css'
 
 
-
 const Users = () => {
 
     const [users, setUsers] = useState([]);
@@ -24,8 +23,8 @@ const Users = () => {
     }
 
 
-
     return (
+
         <div className={'users_and_details_wrap'}>
             <div className={'users_wrap'}>
                 {
@@ -35,9 +34,10 @@ const Users = () => {
                 }
             </div>
             <div className={'details_wrap'}>
-                { user && <UserDetails user={user} setUser={setUser}/>}
+                {user && <UserDetails user={user} setUser={setUser}/>}
             </div>
         </div>
+
     )
 };
 
