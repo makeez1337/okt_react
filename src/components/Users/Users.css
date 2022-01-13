@@ -1,0 +1,15 @@
+.users_and_details_wrap{
+ display: flex;
+}
+
+.users_wrap {
+ width: 20%;
+}
+
+.details_wrap {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ width: 80%;
+}

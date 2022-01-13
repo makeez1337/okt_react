@@ -1,0 +1,19 @@
+.detail_text_style {
+    font-size: 70px;
+    font-weight: 700;
+}
+
+.detail_style {
+    background-color: violet;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.color_red {
+    color: red;
+}
+
+.btn_style {
+    height: 50px;
+    width: 100px;
+}
