@@ -5,7 +5,8 @@ import Post from "../Post/Post";
 
 const UserDetails = (props) => {
     const {
-        user: {id, name, username, email, address: {street, suite, city, zipcode, geo: {lat, lng}}},
+        user: {id, name, username, email,company,address: {street, suite, city, zipcode, geo: {lat, lng}},phone,
+            website},
         setUser
     } = props;
 
@@ -31,6 +32,12 @@ const UserDetails = (props) => {
                 <p className={'detail_text_style color_red'}>Geo:</p>
                 <p className={'detail_text_style'}>Lat : {lat}</p>
                 <p className={'detail_text_style'}>Lng {lng}</p>
+                <p className={'detail_text_style'}>Phone : {phone}</p>
+                <p className={'detail_text_style'}>Website : {website}</p>
+                <p className={'detail_text_style color_red'}>Company:</p>
+                <p className={'detail_text_style'}>name: {company.name}</p>
+                <p className={'detail_text_style'}>catchPhrase: {company.catchPhrase}</p>
+                <p className={'detail_text_style'}>bs: {company.bs}</p>
                 <button onClick={() => {
                     console.log(posts);
                     return postService.getAll()
