@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import './FormUpdate.css'
 import {useForm} from "react-hook-form";
 import {carService} from "../../services/car.service";
-import {joiResolver} from "@hookform/resolvers/joi";
-import {carValidator} from "../../validators/car.validator";
 
 const FormUpdate = ({patchUser}) => {
 
