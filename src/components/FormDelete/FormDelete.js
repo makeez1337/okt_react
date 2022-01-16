@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import {carService} from "../../services/car.service";
+import {joiResolver} from "@hookform/resolvers/joi/dist/joi";
+import {carDeleteValidator, carValidator} from "../../validators/car.validator";
 
 const FormDelete = ({updateDelete}) => {
 
 
     const {
         register, watch, handleSubmit, formState: {errors}
-    } = useForm();
+    } = useForm({resolver:joiResolver(carDeleteValidator),mode:"onTouched"});
 
     const [formError, setFormError] = useState(null);
 
@@ -27,6 +29,7 @@ const FormDelete = ({updateDelete}) => {
                 <label>DeleteById: <input type="number" defaultValue={''} {...register('delete')}/></label>
                 <button>Delete</button>
                 {formError && <div>{formError}</div>}
+                {errors.delete && <div>{errors.delete.message}</div>}
 
             </form>
 
