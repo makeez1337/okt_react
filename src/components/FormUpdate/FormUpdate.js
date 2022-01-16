@@ -13,8 +13,6 @@ const FormUpdate = ({patchUser}) => {
 
     const [formError, setFormErrorId] = useState([]);
 
-    console.log(formError);
-
 
 
     const submit = (obj) => {
@@ -32,6 +30,9 @@ const FormUpdate = ({patchUser}) => {
                 {formError.detail && <span>{formError.detail}</span>}
                 <div><label>Field to update:<input type="text" defaultValue={''} {...register('update')}/></label></div>
                 <div><label>New value:<input type="text" defaultValue={''} {...register('value')}/></label></div>
+                {formError.model && <span>{formError.model}</span>}
+                {formError.year && <span>{formError.year}</span>}
+                {formError.price && <span>{formError.price}</span>}
                 <button>Update</button>
             </form>
         </div>

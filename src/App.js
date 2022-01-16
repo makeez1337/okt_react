@@ -25,7 +25,6 @@ function App() {
     const patchUser = data => {
         setUpdateTrigger(data);
     }
-    console.log(updateTrigger);
 
 
     return (

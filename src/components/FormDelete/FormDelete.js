@@ -11,7 +11,6 @@ const FormDelete = ({updateDelete}) => {
 
     const [formError, setFormError] = useState(null);
 
-    console.log(formError);
 
 
     const submit = (id) => {

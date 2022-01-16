@@ -13,13 +13,12 @@ const Forms = ({update}) => {
 
     const [formError, setFormError] = useState({});
 
-
     const submit = (car) => {
         carService.create(car).then(value => update(value)).catch(err => {
-            console.log(err.response.data);
             setFormError(err.response.data);
         })
     }
+
 
 
     // watch(e=> console.log(e))
