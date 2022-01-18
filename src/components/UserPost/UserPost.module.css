@@ -1,0 +1,12 @@
+.post_style {
+    background-color: royalblue;
+    width: 40%;
+    margin: 5px;
+    text-align: center;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid;
+}

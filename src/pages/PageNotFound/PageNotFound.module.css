@@ -1,0 +1,9 @@
+.wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.text_style {
+    margin-top: 250px;
+    font-size: 200px;
+}

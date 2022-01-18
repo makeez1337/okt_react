@@ -1,0 +1,12 @@
+.posts_wrap {
+    overflow: scroll;
+    width: 100%;
+    height: 800px;
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-left: 10px;
+    border: 2px solid;
+}

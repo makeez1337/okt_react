@@ -1,0 +1,14 @@
+.users_wrap {
+    display: flex;
+    width: 35%;
+}
+
+.main_wrap {
+    display: flex;
+}
+
+.outlet {
+    width: 65%;
+    justify-content: center;
+    display: flex;
+}

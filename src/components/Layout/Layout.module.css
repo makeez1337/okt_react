@@ -1,0 +1,7 @@
+.choose_helper {
+    background-color: purple;
+    color: orange;
+    justify-content: center;
+    display: flex;
+    font-weight: 700;
+}

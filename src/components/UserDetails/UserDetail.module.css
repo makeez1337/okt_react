@@ -1,0 +1,29 @@
+.detail_wrap {
+    justify-content: start;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.detail_style {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.btn_style {
+    background-color: darksalmon;
+    width: 130px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.btn_wrap {
+    width: 100%;
+}
+
+.error {
+    font-size: 120px;
+    font-weight: 700;
+    color: red;
+}

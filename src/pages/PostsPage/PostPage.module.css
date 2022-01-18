@@ -1,0 +1,11 @@
+.wrap {
+    display: flex;
+}
+
+.posts_wrap {
+    width: 40%;
+}
+
+.outlet {
+    width: 60%;
+}
