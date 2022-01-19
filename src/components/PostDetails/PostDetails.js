@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation, useNavigate, useParams, Outlet} from "react-router-dom";
+import {useLocation, useNavigate, useParams, Outlet, useSearchParams} from "react-router-dom";
 
 import css from './PostDetails.module.css'
 import {postService} from "../../services/post.service";
@@ -23,10 +23,11 @@ const PostDetails = () => {
         postService.getById(params.id).then(res => {
             setErrRequest(null);
             setPostDetails({...res})
-        }).catch(err => setErrRequest(errRequest));
+        }).catch(err => setErrRequest(err));
     }, [state]);
 
     const navigate = useNavigate();
+
 
 
     return (
