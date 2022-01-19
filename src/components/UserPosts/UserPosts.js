@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 
 import {postService} from "../../services/post.service";
@@ -12,7 +12,9 @@ const UserPosts = () => {
 
     const [userPosts, setUserPosts] = useState([]);
 
+    useEffect(()=>{
     postService.getByUserId(userId).then(res => setUserPosts(res));
+    },[])
 
     return (
         <div className={css.posts_wrap}>
