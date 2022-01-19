@@ -39,7 +39,7 @@ const UserDetails = () => {
                     <div className={css.detail_style}>Phone: {userDetail.phone}</div>
                     <div className={css.detail_style}>Website: {userDetail.website}</div>
                     <div className={css.btn_wrap}>
-                        <button onClick={() => navigate(`postsId`)}
+                        <button onClick={() => navigate(`posts`)}
                                 className={`${css.detail_style} ${css.btn_style}`}>UserPosts
                         </button>
                     </div>

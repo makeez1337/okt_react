@@ -7,9 +7,9 @@ import UserDetails from "./components/UserDetails/UserDetails";
 import UserPosts from "./components/UserPosts/UserPosts";
 import PostDetails from "./components/PostDetails/PostDetails";
 import PostComments from "./components/PostComments/PostComments";
-import {HomePage, PageNotFound, PostsPage, UsersPage} from "./pages";
 import Albums from "./components/Albums/Albums";
 import Photos from "./components/Photos/Photos";
+import {HomePage, PageNotFound, PostsPage, UsersPage} from "./pages";
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
 
                     <Route path={'users'} element={<UsersPage/>}>
                         <Route path={':id'} element={<UserDetails/>}>
-                            <Route path={`postsId`} element={<UserPosts/>}/>
+                            <Route path={`posts`} element={<UserPosts/>}/>
                         </Route>
 
                         <Route path={'albums/:id'} element={<Albums/>}>
