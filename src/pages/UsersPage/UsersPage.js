@@ -20,4 +20,4 @@ const UsersPage = () => {
     );
 };
 
-export default UsersPage;
+export {UsersPage};

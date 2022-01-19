@@ -9,6 +9,7 @@ const PostDetails = () => {
     const [postDetails, setPostDetails] = useState(null);
     const {state} = useLocation();
 
+
     const params = useParams();
 
     const [errRequest, setErrRequest] = useState(null);

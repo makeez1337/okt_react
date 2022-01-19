@@ -3,14 +3,11 @@ import {Routes, Route} from "react-router-dom"
 
 import css from './App.module.css'
 import Layout from "./components/Layout/Layout";
-import UsersPage from "./pages/UsersPage/UsersPage";
-import PostsPage from "./pages/PostsPage/PostsPage";
-import PageNotFound from "./pages/PageNotFound/PageNotFound";
-import HomePage from "./pages/HomePage/HomePage";
 import UserDetails from "./components/UserDetails/UserDetails";
 import UserPosts from "./components/UserPosts/UserPosts";
 import PostDetails from "./components/PostDetails/PostDetails";
 import PostComments from "./components/PostComments/PostComments";
+import {HomePage, PageNotFound, PostsPage, UsersPage} from "./pages";
 
 
 function App() {
