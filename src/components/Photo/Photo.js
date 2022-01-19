@@ -8,8 +8,8 @@ const Photo = ({photo}) => {
 
     return (
         <div className={css.wrap}>
-            <div>AlbumId: {albumId}</div>
-            <div>Title: {title}, Id: {id}</div>
+            <div>AlbumId: {albumId}, Id: {id}</div>
+            <div>Title: {title}</div>
             <img src={thumbnailUrl} alt=""/>
         </div>
     );
