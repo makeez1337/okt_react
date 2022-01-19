@@ -39,7 +39,7 @@ const PostDetails = () => {
                     <div>Id: {postDetails.id}</div>
                     <div>Title: {postDetails.title}</div>
                     <div className={css.body_text_style}>Body: {postDetails.body}</div>
-                    <button onClick={() => navigate(`comment/${postDetails.id}`)} className={css.btn_style}>Post
+                    <button onClick={() => navigate(`comment`)} className={css.btn_style}>Post
                         Comments
                     </button>
                 </div>

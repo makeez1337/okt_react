@@ -17,6 +17,7 @@ const Albums = () => {
 
 
 
+
     return (
         <div>
             <div className={css.header_wrap}><h1>Albums</h1></div>

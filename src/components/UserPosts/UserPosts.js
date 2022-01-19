@@ -10,6 +10,8 @@ const UserPosts = () => {
     const params = useParams();
     const userId = params.id;
 
+    console.log(params);
+
     const [userPosts, setUserPosts] = useState([]);
 
     useEffect(()=>{

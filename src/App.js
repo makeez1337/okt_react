@@ -23,7 +23,7 @@ function App() {
 
                     <Route path={'users'} element={<UsersPage/>}>
                         <Route path={':id'} element={<UserDetails/>}>
-                            <Route path={`postsId/:pId`} element={<UserPosts/>}/>
+                            <Route path={`postsId`} element={<UserPosts/>}/>
                         </Route>
 
                         <Route path={'albums/:id'} element={<Albums/>}>
@@ -33,7 +33,7 @@ function App() {
 
                     <Route path={'posts'} element={<PostsPage/>}>
                         <Route path={':id'} element={<PostDetails/>}>
-                            <Route path={'comment/:id'} element={<PostComments/>}/>
+                            <Route path={'comment'} element={<PostComments/>}/>
                         </Route>
                     </Route>
 

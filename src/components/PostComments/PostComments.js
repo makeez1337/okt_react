@@ -10,6 +10,7 @@ const PostComments = () => {
     const params = useParams();
 
     const [comments, setComments] = useState([]);
+    console.log(params);
 
     useEffect(() => {
         postService.getCommentsById(params.id).then(res => setComments(res));
