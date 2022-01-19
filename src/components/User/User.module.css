@@ -2,9 +2,13 @@
     font-size: 30px;
     font-weight: 700;
     border: 2px solid orange;
-    justify-content: space-evenly;
+    justify-content: space-between;
     display: flex;
     margin-top: 30px;
     color:  slategray;
     margin-left: 5px;
+}
+
+.user_name {
+    width: 65%;
 }

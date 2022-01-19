@@ -1,0 +1,18 @@
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.header_wrap {
+    justify-content: center;
+    display: flex;
+}
+
+.outlet {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

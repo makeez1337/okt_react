@@ -9,7 +9,9 @@ const User = ({user}) => {
 
     return (
         <div className={css.user_wrap}>
-            {name} - {username} <Link state={user} to={id.toString()}>details</Link>
+            <div className={css.user_name}>{name} - {username}</div>
+            <div><Link state={user} to={id.toString()}>details</Link></div>
+            <div><Link to={'albums/'+id.toString()}>albums</Link></div>
         </div>
     );
 };

@@ -8,6 +8,8 @@ import UserPosts from "./components/UserPosts/UserPosts";
 import PostDetails from "./components/PostDetails/PostDetails";
 import PostComments from "./components/PostComments/PostComments";
 import {HomePage, PageNotFound, PostsPage, UsersPage} from "./pages";
+import Albums from "./components/Albums/Albums";
+import Photos from "./components/Photos/Photos";
 
 
 function App() {
@@ -21,7 +23,11 @@ function App() {
 
                     <Route path={'users'} element={<UsersPage/>}>
                         <Route path={':id'} element={<UserDetails/>}>
-                            <Route path={`postsId/:id`} element={<UserPosts/>}/>
+                            <Route path={`postsId/:pId`} element={<UserPosts/>}/>
+                        </Route>
+
+                        <Route path={'albums/:id'} element={<Albums/>}>
+                            <Route path={'photos/:photoId'} element={<Photos/>}/>
                         </Route>
                     </Route>
 
