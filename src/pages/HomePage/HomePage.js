@@ -10,7 +10,9 @@ const HomePage = () => {
     console.log(imgUrl);
 
     useEffect(() => {
+        if (imgVal) {
         randompagesService.getPhoto(imgVal).then(res => setImgUrl(res));
+        }
     },[imgVal])
 
 
