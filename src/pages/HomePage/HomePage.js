@@ -1,35 +1,54 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {randompagesService} from "../../services/randompages.service";
 
 const HomePage = () => {
 
+    const [imgVal, setImgVal] = useState('');
+
     const [imgUrl, setImgUrl] = useState('');
 
-    const [btnName, setBtnName] = useState('');
-    console.log(btnName);
     console.log(imgUrl);
+
+    useEffect(() => {
+        randompagesService.getPhoto(imgVal).then(res => setImgUrl(res));
+    },[imgVal])
+
+
 
 
     return (
         <div>
             <div>
-                <button>cat</button>
+                <button onClick={() => {
+                    setImgVal('/cats');
+                }}>cat</button>
             </div>
             <div>
-                <button>car</button>
+                <button onClick={() => {
+                    setImgVal('/cars');
+                }}>car</button>
             </div>
             <div>
-                <button>dog</button>
+                <button onClick={() => {
+                    setImgVal('/dogs');
+                }}>dog</button>
             </div>
             <div>
-                <button>girl</button>
+                <button onClick={() => {
+                    setImgVal('/girl');
+                }}>girl</button>
             </div>
             <div>
-                <button>notebook</button>
+                <button onClick={() => {
+                    setImgVal('/notebook');
+                }}>notebook</button>
             </div>
 
             <div>
                 <img src={imgUrl} alt=""/>
-                <button>Update</button>
+                <button onClick={() => {
+                    randompagesService.getPhoto(imgVal).then(res => setImgUrl(res));
+                }}>Update</button>
             </div>
         </div>
 
