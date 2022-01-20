@@ -22,17 +22,17 @@ const HomePage = () => {
         <div>
             <div>
                 <button onClick={() => {
-                    setImgVal('/cats');
+                    setImgVal('/cat');
                 }}>cat</button>
             </div>
             <div>
                 <button onClick={() => {
-                    setImgVal('/cars');
+                    setImgVal('/car');
                 }}>car</button>
             </div>
             <div>
                 <button onClick={() => {
-                    setImgVal('/dogs');
+                    setImgVal('/dog');
                 }}>dog</button>
             </div>
             <div>
