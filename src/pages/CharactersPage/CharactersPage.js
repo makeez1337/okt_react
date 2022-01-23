@@ -19,7 +19,8 @@ const CharactersPage = () => {
 
     const mappedArr = [];
 
-    state.map((val) => {
+
+    state.characters.map((val) => {
         let res = '';
         for (const symbol of val) {
             nums.map((num) => {
@@ -54,6 +55,7 @@ const CharactersPage = () => {
 
     return (
         <div className={`${css.background} ${lengthStyle}`}>
+            <div className={css.state_name}>{state.name}</div>
             <div className={css.characters_wrap}>
                 {characters.length &&
                     characters.map(val => <Character character={val} key={val.id}/>)
