@@ -1,0 +1,26 @@
+.episodes_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 40px;
+
+}
+
+
+.btn_wrap {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+
+.btn_style {
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.disabled {
+    color: red;
+}
