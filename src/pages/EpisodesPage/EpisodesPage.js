@@ -3,7 +3,7 @@ import React from 'react';
 import css from './EpisodesPage.module.css'
 import Episodes from "../../components/Episodes/Episodes";
 
-const EpisodesPage = ({page}) => {
+const EpisodesPage = () => {
 
 
 
@@ -15,7 +15,7 @@ const EpisodesPage = ({page}) => {
             </div>
             <div className={css.episodes_background}>
                 <div className={css.episodes_wrap}>
-                    <Episodes page={page}/>
+                    <Episodes/>
                 </div>
             </div>
         </div>

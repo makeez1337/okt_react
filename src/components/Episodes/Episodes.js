@@ -1,33 +1,38 @@
 import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 import {episodeService} from "../../services/episode.service";
 import Episode from "../Episode/Episode";
 import css from './Episodes.module.css'
 
-const Episodes = ({page}) => {
+const Episodes = () => {
 
     const [episods, setEpisods] = useState([]);
+
+    const page = useParams();
 
     const [prevBtnDisable, setPrevBtnDisable] = useState(false);
 
     const [nextBtnDisable, setNextBtnDisable] = useState(false);
 
+    const [pages, setPages] = useState(null);
+
     useEffect(() => {
-        episodeService.getByPage(page).then(res => {
+        episodeService.getByPage(+page.id).then(res => {
+            setPages(res.info.pages);
             setEpisods([...res.results])
         });
-    }, [page])
+    }, [+page.id])
 
     useEffect(()=>{
-        if (page === 1) setPrevBtnDisable(true);
+        if (+page.id === 1) setPrevBtnDisable(true);
         else setPrevBtnDisable(false);
-    },[page])
+    },[+page.id])
 
     useEffect(()=>{
-        if (page === 3) setNextBtnDisable(true)
+        if (+page.id === pages) setNextBtnDisable(true)
         else setNextBtnDisable(false);
-    },[page])
+    },[+page.id])
 
 
 
@@ -41,10 +46,10 @@ const Episodes = ({page}) => {
             </div>
 
             <div className={css.btn_wrap}>
-                <Link to={`/page/${page - 1}`}>
+                <Link to={`/page/${+page.id - 1}`}>
                     <button disabled={prevBtnDisable} className={css.btn_style}>Previous page</button>
                 </Link>
-                <Link to={`/page/${page + 1}`}>
+                <Link to={`/page/${+page.id + 1}`}>
                     <button disabled={nextBtnDisable} className={css.btn_style}>Next page</button>
                 </Link>
             </div>
