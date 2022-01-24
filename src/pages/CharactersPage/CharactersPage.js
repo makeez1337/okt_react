@@ -38,7 +38,7 @@ const CharactersPage = () => {
     }, [arrForApi])
 
     useEffect(() => {
-        if (characters.length >= 21) {
+        if (characters.length >= 15) {
             setLengthStyle(css.height_auto)
         }
     }, [characters.length])
