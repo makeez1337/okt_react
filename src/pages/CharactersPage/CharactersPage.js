@@ -16,12 +16,9 @@ const CharactersPage = () => {
     const [lengthStyle, setLengthStyle] = useState('');
 
 
-    const mappedArr = [];
 
+    const mappedArr = state.characters.map((val) => val.replace(/[^0-9]/g, ''));
 
-    state.characters.filter((val) => {
-        mappedArr.push(val.replace(/[^0-9]/g, ''));
-    });
 
 
     useEffect(() => {
