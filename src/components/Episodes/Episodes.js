@@ -42,7 +42,6 @@ const Episodes = () => {
                 {
                     episods.map(episode => <Episode episodeDetails={episode} key={episode.id}/>)
                 }
-
             </div>
 
             <div className={css.btn_wrap}>
