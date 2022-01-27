@@ -1,0 +1,22 @@
+.wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.cats_and_dogs_wrap {
+    display: flex;
+    flex-direction: row;
+}
+
+.cats {
+    width: 50%;
+    display: flex;
+    margin-right: 20px;
+    flex-direction: column;
+    align-items: end;
+}
+
+.dogs{
+    width: 50%;
+    margin-left: 20px;
+}
