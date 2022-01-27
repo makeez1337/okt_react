@@ -43,7 +43,7 @@ function App() {
 
             case 'removeCat':
                 let catsArr = [...state.cats]
-                const splicedCatsArr = catsArr.splice(action.index,1);
+                const splicedCatsArr = catsArr.splice(action.index, 1);
                 return {
                     ...state, cats: catsArr
                 }
@@ -52,9 +52,8 @@ function App() {
                 let dogsArr = [...state.dogs];
                 const slicedDogsArr = dogsArr.splice(action.index, 1);
                 return {
-                    ...state, dogs:dogsArr
+                    ...state, dogs: dogsArr
                 }
-
 
             default:
                 return state;
