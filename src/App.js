@@ -72,6 +72,10 @@ function App() {
         })
     }
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+    }
+
 
     return (
 
@@ -79,7 +83,7 @@ function App() {
 
             <div className={'wrap'}>
 
-                <form onSubmit={(e) => e.preventDefault()}>
+                <form onSubmit={onSubmit}>
                     <label>
                         Add Cat:
                         <input name={'cat'} value={state.cat} onChange={(e) => handleTextChanges(e)}/>
