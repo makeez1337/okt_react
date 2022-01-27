@@ -80,7 +80,6 @@ function App() {
             <div className={'wrap'}>
 
                 <form onSubmit={(e) => e.preventDefault()}>
-
                     <label>
                         Add Cat:
                         <input name={'cat'} value={state.cat} onChange={(e) => handleTextChanges(e)}/>
@@ -92,14 +91,11 @@ function App() {
                         <input name={'dog'} value={state.dog} onChange={(e) => handleTextChanges(e)}/>
                     </label>
                     <button onClick={() => dispatch({type: 'addDog'})}>Add</button>
-
                 </form>
-
             </div>
             <hr/>
 
             <div className={'cats_and_dogs_wrap'}>
-
                 <div className={'cats'}>
                     {
                         state.cats.length !== 0 && state.cats.map((value, index) => <Cat key={index}
@@ -115,7 +111,6 @@ function App() {
                                                                                          removeDog={dispatch}/>)
                     }
                 </div>
-
             </div>
 
 
