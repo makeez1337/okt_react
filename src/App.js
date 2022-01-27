@@ -48,6 +48,7 @@ function App() {
                 return {
                     ...state, cats: catsArr
                 }
+
             case 'removeDog':
                 let dogsArr = [...state.dogs];
                 const slicedDogsArr = dogsArr.splice(action.index, 1);
