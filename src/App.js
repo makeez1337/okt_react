@@ -37,6 +37,9 @@ function App() {
                 return {...state, randomCount: getRndInteger(5, 100)};
             case 'ran1000-5000':
                 return {...state, randomCount: getRndInteger(1000, 5000)};
+
+            default:
+                throw new Error('Something went wrong');
         }
 
     }
