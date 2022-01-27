@@ -3,7 +3,7 @@ import {useReducer} from "react";
 
 import Cat from "./components/Cat";
 import Dog from "./components/Dog";
-import {formReducer} from "./reducers/FormReducer";
+import {formReducer} from "./reducers/formReducer";
 
 function App() {
 
