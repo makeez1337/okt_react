@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Dog = ({dog,removeDog}) => {
-    console.log(dog);
     return (
         <div>
             {dog.value}
