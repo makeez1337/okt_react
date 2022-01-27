@@ -34,9 +34,9 @@ function App() {
                 return {...state, count3: action.payload};
 
             case 'ran5-100':
-                return {...state, randomCount: getRndInteger(5, 100)};
+                return {...state, randomNum: getRndInteger(5, 100)};
             case 'ran1000-5000':
-                return {...state, randomCount: getRndInteger(1000, 5000)};
+                return {...state, randomNum: getRndInteger(1000, 5000)};
 
             default:
                 throw new Error('Something went wrong');
@@ -48,7 +48,7 @@ function App() {
         count1: 25,
         count2: 50,
         count3: 75,
-        randomCount: 0
+        randomNum: 0
     });
 
 
@@ -81,7 +81,7 @@ function App() {
                 <button onClick={() => dispatch({type: 'ran5-100'})}>Random from 5-100</button>
                 <button onClick={() => dispatch({type: 'ran1000-5000'})}>Random from 1000-5000</button>
             </div>
-            <div>{state.randomCount}</div>
+            <div>{state.randomNum}</div>
 
         </div>
 
