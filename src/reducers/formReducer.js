@@ -1,5 +1,7 @@
 const formReducer = (state, action) => {
 
+    console.log(action);
+
     switch (action.type) {
 
         case 'handle input text':
@@ -9,22 +11,10 @@ const formReducer = (state, action) => {
             }
 
         case 'addCat':
-            if (state.cat) {
-                return {
-                    ...state,
-                    cats: state.cats.concat(state.cat)
-                }
-            }
-            return state;
+            return state.cat ? {...state, cats: state.cats.concat(state.cat)} : state;
 
         case 'addDog':
-            if (state.dog) {
-                return {
-                    ...state,
-                    dogs: state.dogs.concat(state.dog)
-                }
-            }
-            return state;
+            return state.dog ? {...state,dogs: state.dogs.concat(state.dog)} : state
 
         case 'removeCat':
             let catsArr = [...state.cats]

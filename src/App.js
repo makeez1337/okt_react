@@ -7,7 +7,6 @@ import {formReducer} from "./reducers/formReducer";
 
 function App() {
 
-
     const initialValues = {
         dogs: [],
         cats: [],
