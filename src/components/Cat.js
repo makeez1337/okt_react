@@ -5,7 +5,6 @@ import './Cat.css'
 const Cat = ({cat,removeCat}) => {
 
 
-    console.log(removeCat);
     return (
         <div>
             {cat.value}
