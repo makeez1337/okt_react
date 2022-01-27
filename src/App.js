@@ -9,6 +9,7 @@ function App() {
     }
 
     const reducer = (state, action) => {
+
         switch (action.type) {
 
             case 'inc1':
@@ -36,10 +37,9 @@ function App() {
                 return {...state, randomCount: getRndInteger(5, 100)};
             case 'ran1000-5000':
                 return {...state, randomCount: getRndInteger(1000, 5000)};
-
-
         }
-    };
+
+    }
 
     const [state, dispatch] = useReducer(reducer, {
         count1: 25,
