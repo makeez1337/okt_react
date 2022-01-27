@@ -1,5 +1,6 @@
 import './App.css';
 import {useReducer} from "react";
+
 import Cat from "./components/Cat";
 import Dog from "./components/Dog";
 
