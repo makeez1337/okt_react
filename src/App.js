@@ -86,13 +86,13 @@ function App() {
                 <form onSubmit={onSubmit}>
                     <label>
                         Add Cat:
-                        <input name={'cat'} value={state.cat} onChange={(e) => handleTextChanges(e)}/>
+                        <input name={'cat'} value={state.cat} onChange={handleTextChanges}/>
                     </label>
                     <button onClick={() => dispatch({type: 'addCat'})}>Add</button>
 
                     <label>
                         Add Dog:
-                        <input name={'dog'} value={state.dog} onChange={(e) => handleTextChanges(e)}/>
+                        <input name={'dog'} value={state.dog} onChange={handleTextChanges}/>
                     </label>
                     <button onClick={() => dispatch({type: 'addDog'})}>Add</button>
                 </form>
