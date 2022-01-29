@@ -46,8 +46,15 @@ export const updateCarThunk = createAsyncThunk(
         const {carReducer:{watch_obj:{model,price,year}}} = getState();
         try {
             if (model) {
-                const newCar = await carService.update({id, model});
-                console.log(newCar);
+                const newCar = await carService.update(id, {model});
+                return newCar;
+            }
+            if (price) {
+                const newCar = await carService.update(id,{price});
+                return newCar;
+            }
+            if (year) {
+                const newCar = await carService.update(id,{year});
                 return newCar;
             }
         } catch (e) {

@@ -11,7 +11,7 @@ const Car = ({car}) => {
 
         <div style={{marginBottom: '50px', marginLeft: '500px'}}>
             <div>Model:{car.model}</div>
-            <div>Price:{car.year}</div>
+            <div>Year:{car.year}</div>
             <div>Price:{car.price}</div>
             <button onClick={() => dispatch(deleteCarThunk({id: car.id}))}>delete</button>
             <button onClick={() => dispatch(updateCarThunk({id: car.id}))}>update</button>
