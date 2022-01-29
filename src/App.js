@@ -1,4 +1,6 @@
 import './App.css';
+import {Cars, Form} from "./components";
+
 
 function App() {
 
@@ -6,6 +8,8 @@ function App() {
     return (
 
         <div>
+            <Form/>
+            <Cars/>
 
         </div>
 
