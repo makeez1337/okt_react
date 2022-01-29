@@ -23,8 +23,8 @@ const Form = () => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>Model<input {...register('model')} type="text"/></label>
-                <label>Price<input {...register('price')} type="text"/></label>
                 <label>Year<input {...register('year')} type="text"/></label>
+                <label>Price<input {...register('price')} type="text"/></label>
                 <button>Create</button>
             </form>
 

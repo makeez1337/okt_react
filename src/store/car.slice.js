@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {carService} from "../services";
 
 
@@ -42,21 +42,24 @@ export const deleteCarThunk = createAsyncThunk(
 export const updateCarThunk = createAsyncThunk(
     'carSlice,updateCarThunk',
     async ({id}, {dispatch, getState}) => {
-        console.log(id);
-        const {carReducer:{watch_obj:{model,price,year}}} = getState();
+        const {carReducer: {watch_obj: {model, price, year}}} = getState();
         try {
+            let car = {};
             if (model) {
                 const newCar = await carService.update(id, {model});
-                return newCar;
+                car = {...car, model, id}
             }
             if (price) {
-                const newCar = await carService.update(id,{price});
-                return newCar;
+                const newCar = await carService.update(id, {price});
+                car = {...car, price, id}
             }
             if (year) {
-                const newCar = await carService.update(id,{year});
-                return newCar;
+                const newCar = await carService.update(id, {year});
+                car = {...car, year, id};
             }
+            dispatch(updateCar({...car}));
+
+
         } catch (e) {
 
         }
@@ -81,11 +84,24 @@ const carSlice = createSlice({
         deleteCar: (state, action) => {
             state.cars = state.cars.filter(car => car.id !== action.payload.id);
         },
-        handleInputChanges: (state,action) => {
+        handleInputChanges: (state, action) => {
             state.watch_obj = action.payload;
         },
-        updateCar: (state,action) => {
-
+        updateCar: (state, action) => {
+            state.cars = state.cars.map(car => {
+                if (car.id === action.payload.id) {
+                    if (action.payload.model) {
+                        car.model = action.payload.model;
+                    }
+                    if (action.payload.price) {
+                        car.price = action.payload.price;
+                    }
+                    if (action.payload.year) {
+                        car.year = action.payload.year;
+                    }
+                }
+                return car;
+            })
         }
     },
     extraReducers: {
@@ -112,5 +128,5 @@ const carSlice = createSlice({
 
 const carReducer = carSlice.reducer;
 
-export const {addCar, deleteCar,handleInputChanges} = carSlice.actions;
+export const {addCar, deleteCar, handleInputChanges, updateCar} = carSlice.actions;
 export default carReducer;
