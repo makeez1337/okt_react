@@ -41,7 +41,7 @@ export const deleteCarThunk = createAsyncThunk(
 
 export const updateCarThunk = createAsyncThunk(
     'carSlice,updateCarThunk',
-    async ({id}, {dispatch, getState}) => {
+    async ({id}, {dispatch, getState,rejectWithValue}) => {
         const {carReducer: {watch_obj: {model, price, year}}} = getState();
         try {
             let car = {};
@@ -61,7 +61,7 @@ export const updateCarThunk = createAsyncThunk(
 
 
         } catch (e) {
-
+            return rejectWithValue(e.message);
         }
     }
 );
