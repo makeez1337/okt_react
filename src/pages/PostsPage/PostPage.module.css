@@ -1,0 +1,8 @@
+.posts_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 200px;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 5px;
+}

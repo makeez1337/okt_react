@@ -2,7 +2,7 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
 import {postService} from "../services";
 
-const getAllPosts = createAsyncThunk(
+export const getAllPosts = createAsyncThunk(
     'postSlice/getAllPosts',
     async (_, {rejectWithValue}) => {
         try {
@@ -23,8 +23,24 @@ const postSlice = createSlice({
         error: null
     },
     extraReducers: {
-        [getAllPosts.pending]: (state,action) => {
-
+        [getAllPosts.pending]: (state, action) => {
+            state.status = 'pending';
+            state.error = null;
+        },
+        [getAllPosts.fulfilled]: (state, action) => {
+            state.status = 'fulfilled';
+            state.posts = action.payload;
+            state.error = null;
+        },
+        [getAllPosts.rejected]: (state, action) => {
+            state.status = 'rejected';
+            state.error = action.payload;
         }
     }
 })
+
+
+const postReducer = postSlice.reducer;
+
+export default postReducer;
+
