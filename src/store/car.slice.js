@@ -58,8 +58,6 @@ export const updateCarThunk = createAsyncThunk(
                 car = {...car, year, id};
             }
             dispatch(updateCar({...car}));
-
-
         } catch (e) {
             return rejectWithValue(e.message);
         }
@@ -85,6 +83,7 @@ const carSlice = createSlice({
             state.cars = state.cars.filter(car => car.id !== action.payload.id);
         },
         handleInputChanges: (state, action) => {
+            console.log(action.payload);
             state.watch_obj = action.payload;
         },
         updateCar: (state, action) => {
@@ -104,7 +103,7 @@ const carSlice = createSlice({
             })
         }
     },
-    extraReducers: {
+    extraReducers:  {
         [getAllCars.pending]: (state, action) => {
             state.status = 'pending';
             state.error = null;

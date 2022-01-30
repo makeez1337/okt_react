@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
 import {joiResolver} from "@hookform/resolvers/joi";
@@ -22,7 +22,9 @@ const Form = () => {
     }
 
     const obj = watch();
+    useEffect(()=>{
     dispatch(handleInputChanges(obj));
+    },[obj])
 
 
     return (
