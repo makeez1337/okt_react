@@ -1,0 +1,19 @@
+.header_wrap {
+    height: 70px;
+    background-color: cornflowerblue;
+    display: flex;
+    gap: 140px;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin: 0;
+}
+
+.header_wrap a {
+    text-decoration: none;
+    color: orange;
+}
+
+.header_wrap a[class='active'] {
+    text-decoration: underline;
+}

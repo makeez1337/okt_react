@@ -1,5 +1,8 @@
+import {Route,Routes,Navigate} from "react-router-dom";
+
 import './App.css';
-import {Cars, Form} from "./components";
+import {CarsPage, HomePage} from "./pages";
+
 
 
 function App() {
@@ -7,11 +10,16 @@ function App() {
 
     return (
 
-        <div>
-            <Form/>
-            <Cars/>
+        <Routes>
+            <Route path={'/'} element={<HomePage/>}>
 
-        </div>
+                <Route index element={<Navigate to={'/cars'}/>}/>
+
+                <Route path={'/cars'} element={<CarsPage/>}/>
+
+
+            </Route>
+        </Routes>
 
     );
 }

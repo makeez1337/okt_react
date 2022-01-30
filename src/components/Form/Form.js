@@ -38,7 +38,6 @@ const Form = () => {
                     <div>{errors.year && errors.year.message}</div>
                     <div>{errors.price && errors.price.message}</div>
                 </div>
-
             </form>
 
         </div>
