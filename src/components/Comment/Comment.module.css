@@ -1,0 +1,9 @@
+.comment_style {
+    background-color: cornflowerblue;
+    width: 400px;
+    border-radius: 5px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
