@@ -15,24 +15,36 @@ const Episodes = () => {
 
     const [nextBtnDisable, setNextBtnDisable] = useState(false);
 
-    const [pages, setPages] = useState(null);
+    const [lastPage, setLastPage] = useState(null);
+
+    const [pages, setPages] = useState([]);
 
     useEffect(() => {
         episodeService.getByPage(+page.id).then(res => {
-            setPages(res.info.pages);
+            setLastPage(res.info.pages);
             setEpisods([...res.results])
         });
     }, [+page.id])
 
-    useEffect(()=>{
+    useEffect(() => {
         if (+page.id === 1) setPrevBtnDisable(true);
         else setPrevBtnDisable(false);
-    },[+page.id])
+    }, [+page.id])
 
-    useEffect(()=>{
-        if (+page.id === pages) setNextBtnDisable(true)
+    useEffect(() => {
+        if (+page.id === lastPage) setNextBtnDisable(true)
         else setNextBtnDisable(false);
-    },[+page.id])
+    }, [+page.id])
+
+    const arrWithAllPages = []
+
+    for (let i = 1; i <= lastPage; i++) {
+        arrWithAllPages.push(i);
+    }
+    useEffect(()=>{
+    setPages(arrWithAllPages);
+    },[arrWithAllPages.length])
+
 
 
 
@@ -48,6 +60,9 @@ const Episodes = () => {
                 <Link to={`/page/${+page.id - 1}`}>
                     <button disabled={prevBtnDisable} className={css.btn_style}>Previous page</button>
                 </Link>
+                {
+                    pages.map(val=> <Link className={css.btn_style} to={`/page/${val}`}><button>{val}</button></Link>)
+                }
                 <Link to={`/page/${+page.id + 1}`}>
                     <button disabled={nextBtnDisable} className={css.btn_style}>Next page</button>
                 </Link>
