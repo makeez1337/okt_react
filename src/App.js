@@ -1,5 +1,5 @@
 import './App.css';
-import {Form} from "./components";
+import {Form, TodoList} from "./components";
 
 function App() {
 
@@ -9,6 +9,7 @@ function App() {
         <div>
             <Form/>
             <hr/>
+            <TodoList/>
         </div>
 
     );
