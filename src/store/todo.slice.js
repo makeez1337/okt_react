@@ -12,28 +12,25 @@ const todoSlice = createSlice({
     reducers: {
         addTodo: (state, action) => {
             state.todoList.push({...action.payload.data, id: new Date().getTime()});
+
             state.allTasks += 1;
         },
         deleteTodo: (state, action) => {
             state.todoList.splice(action.payload.index, 1);
+
             state.allTasks -= 1;
+
             if (action.payload.task.status && action.payload.task.status === true) {
                 state.completedTasks -= 1;
             }
 
         },
         isCheckedStatus: (state, action) => {
-            state.todoList.map(list => {
-                if (list.id === action.payload.id) {
-                    list.status = action.payload.status;
-                }
-                return list;
-            })
-            if (action.payload.status === true) {
-                state.completedTasks += 1;
-            } else {
-                state.completedTasks -= 1;
-            }
+            const index = action.payload.index;
+
+            state.todoList[index] = {...state.todoList[index], status: action.payload.status};
+
+            action.payload.status === true ? state.completedTasks += 1 : state.completedTasks -= 1;
         }
 
     }

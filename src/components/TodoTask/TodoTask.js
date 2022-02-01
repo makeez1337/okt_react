@@ -10,7 +10,7 @@ const TodoTask = ({task, index}) => {
 
 
     const isChecked = (e) => {
-        dispatch(isCheckedStatus({status: e.target.checked, id: task.id}));
+        dispatch(isCheckedStatus({status: e.target.checked, index}));
     }
 
     return (
