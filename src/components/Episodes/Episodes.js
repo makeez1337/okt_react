@@ -17,7 +17,6 @@ const Episodes = () => {
 
     const [lastPage, setLastPage] = useState(null);
 
-    const [pages, setPages] = useState([]);
 
     useEffect(() => {
         episodeService.getByPage(+page.id).then(res => {
@@ -41,9 +40,7 @@ const Episodes = () => {
     for (let i = 1; i <= lastPage; i++) {
         arrWithAllPages.push(i);
     }
-    useEffect(() => {
-        setPages(arrWithAllPages);
-    }, [arrWithAllPages.length])
+
 
 
     return (
@@ -59,7 +56,7 @@ const Episodes = () => {
                     <button disabled={prevBtnDisable} className={css.btn_style}>Previous page</button>
                 </Link>
                 {
-                    pages.map((val, index) => {
+                    arrWithAllPages.map((val, index) => {
                         if (index + 1 === +page.id) {
                             return <Link key={index} className={css.btn_style} to={`/page/${val}`}><button style={{backgroundColor:'orange'}}>{val}</button></Link>
                         }else {
