@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch} from "react-redux";
 
 import {deleteTodo, isCheckedStatus} from "../../store/todo.slice";
+import css from './TodoTask.module.css'
 
 const TodoTask = ({task, index}) => {
 
@@ -16,7 +17,7 @@ const TodoTask = ({task, index}) => {
         <div>
             <input onClick={isChecked} type="checkbox"/>
             {task.status === true ?
-            <span style={{textDecoration: 'line-through'}}>{task.todo}</span>
+            <span className={css.line_throught}>{task.todo}</span>
             :
             <span>{task.todo}</span>
             }
