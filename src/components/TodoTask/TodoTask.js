@@ -14,7 +14,7 @@ const TodoTask = ({task, index}) => {
     return (
         <div>
             <input onClick={isChecked} type="checkbox"/> {task.todo}
-            <button onClick={() => dispatch(deleteTodo({index,task}))}>delete</button>
+            <button style={{marginLeft:'10px'}} onClick={() => dispatch(deleteTodo({index,task}))}>delete</button>
         </div>
     );
 };

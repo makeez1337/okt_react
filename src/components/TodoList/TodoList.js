@@ -6,7 +6,7 @@ import css from './TodoList.module.css'
 
 const TodoList = () => {
 
-    const {todoList} = useSelector(prev => prev.todoReducer);
+    const {todoList} = useSelector(prev => prev['todoReducer']);
 
 
     return (

@@ -31,11 +31,11 @@ const todoSlice = createSlice({
             })
             if (action.payload.status === true) {
                 state.completedTasks += 1;
-            }else {
+            } else {
                 state.completedTasks -= 1;
             }
-
         }
+
     }
 })
 
