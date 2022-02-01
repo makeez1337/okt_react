@@ -7,10 +7,11 @@ const TodoList = () => {
 
     console.log(todoList);
 
-
     return (
         <div>
-
+            {
+                // todoList.length !== 0 && todoList.map(task => )
+            }
         </div>
     );
 };

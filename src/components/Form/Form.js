@@ -13,6 +13,7 @@ const dispatch = useDispatch();
 
     const onSubmit = (data) => {
         dispatch(addTodo({data}));
+        reset();
     }
 
     return (

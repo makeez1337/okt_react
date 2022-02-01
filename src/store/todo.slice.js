@@ -11,7 +11,8 @@ const todoSlice = createSlice({
     initialState,
     reducers: {
         addTodo: (state, action) => {
-            state.todoList.push({...action.payload.data.todo, id: new Date().getTime()});
+            state.todoList.push({...action.payload.data,id:new Date().getTime()});
+            state.allTasks += 1;
         }
     }
 })
