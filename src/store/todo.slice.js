@@ -24,10 +24,9 @@ const todoSlice = createSlice({
 
             state.allTasks -= 1;
 
-            if (action.payload.task.status && action.payload.task.status === true) {
+            if (action.payload.task.status) {
                 state.completedTasks -= 1;
             }
-
         },
         isCheckedStatus: (state, action) => {
             const index = action.payload.index;
