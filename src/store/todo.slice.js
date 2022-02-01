@@ -6,14 +6,18 @@ const initialState = {
     completedTasks: 0,
 }
 
+const emptyStringRegEXP = /^\s+$/
+
 const todoSlice = createSlice({
     name: 'todoSlice',
     initialState,
     reducers: {
         addTodo: (state, action) => {
-            state.todoList.push({...action.payload.data, id: new Date().getTime()});
-
-            state.allTasks += 1;
+            const name = action.payload.data.todo;
+            if (name && !name.match(emptyStringRegEXP) ) {
+                state.todoList.push({...action.payload.data, id: new Date().getTime()});
+                state.allTasks += 1;
+            }
         },
         deleteTodo: (state, action) => {
             state.todoList.splice(action.payload.index, 1);
