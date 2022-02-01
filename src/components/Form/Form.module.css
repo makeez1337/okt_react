@@ -2,3 +2,9 @@
     display: flex;
     justify-content: center;
 }
+
+.counter_wrap {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
