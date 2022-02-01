@@ -1,4 +1,5 @@
 import './App.css';
+import {Form} from "./components";
 
 function App() {
 
@@ -6,7 +7,8 @@ function App() {
     return (
 
         <div>
-
+            <Form/>
+            <hr/>
         </div>
 
     );
