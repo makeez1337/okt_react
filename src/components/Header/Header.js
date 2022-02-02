@@ -10,7 +10,7 @@ const Header = () => {
     return (
         <div className={css.header_wrap}>
             <h5 onClick={()=>navigate('/page/1')}>Rick and Morty</h5>
-            <img onClick={()=>navigate('/page/1')} src='http://assets.stickpng.com/images/58f37747a4fa116215a92414.png' alt=""/>
+            <img onClick={()=>navigate('/page/1')} src='http://assets.stickpng.com/images/58f37719a4fa116215a9240e.png' alt=""/>
         </div>
     );
 };
