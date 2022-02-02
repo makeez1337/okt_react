@@ -8,6 +8,8 @@ const TodoList = () => {
 
     const {todoList} = useSelector(prev => prev['todoReducer']);
 
+    console.log(todoList);
+
 
     return (
         <div className={css.tasks_wrap}>

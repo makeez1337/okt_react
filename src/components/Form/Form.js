@@ -14,7 +14,7 @@ const Form = () => {
     const dispatch = useDispatch();
 
     const onSubmit = (data) => {
-        dispatch(addTodo({data}));
+        dispatch(addTodo({data: {...data, status: false}}));
         reset();
     }
 
