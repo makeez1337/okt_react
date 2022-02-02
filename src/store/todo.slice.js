@@ -13,8 +13,8 @@ const todoSlice = createSlice({
     initialState,
     reducers: {
         addTodo: (state, action) => {
-            const name = action.payload.data.todo;
-            if (name && !name.match(emptyStringRegEXP) ) {
+            const taskName = action.payload.data.todo;
+            if (taskName && !taskName.match(emptyStringRegEXP) ) {
                 state.todoList.push({...action.payload.data, id: new Date().getTime()});
                 state.allTasks += 1;
             }
