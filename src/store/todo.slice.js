@@ -20,7 +20,8 @@ const todoSlice = createSlice({
             }
         },
         deleteTodo: (state, action) => {
-            state.todoList.splice(action.payload.index, 1);
+            const index = action.payload.index;
+            state.todoList.splice(index, 1);
 
             state.allTasks -= 1;
 
