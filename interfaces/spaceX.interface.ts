@@ -14,23 +14,23 @@ export interface ISpaceX {
 export interface IRocket {
     rocket_name: string;
     first_stage: {
-        cores: [
-            {
-                flight: number;
-                core: {
-                    reuse_count: number;
-                    status: string;
-                }
-            }
-        ]
+        cores: ICores[]
     },
     second_stage: {
-        payloads: [
-            {
-                payload_type: string;
-                payload_mass_kg: number;
-                payload_mass_lbs: number;
-            }
-        ]
+        payloads: IPayloads[]
     }
+}
+
+export interface ICores {
+    flight: number;
+    core: {
+        reuse_count: number;
+        status: string;
+    }
+}
+
+export interface IPayloads {
+    payload_type: string;
+    payload_mass_kg: number;
+    payload_mass_lbs: number;
 }

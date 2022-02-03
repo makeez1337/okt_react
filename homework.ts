@@ -1,4 +1,4 @@
-import {ISpaceX, IRocket} from './interfaces/spaceX.interface'
+import {ISpaceX, IRocket,ICores,IPayloads} from './interfaces/spaceX.interface'
 import {IUser} from './interfaces/user.interface'
 
 // 1) создать интерфейс на основе этого объекта:
@@ -63,7 +63,7 @@ function showSum(a:number,b:number):void{
 
 ///////////////////////////////////////////////////////////
 
-function incAge(someUser:Partial<IUser>, inc):Partial<IUser>{
+function incAge(someUser:IUser, inc):IUser{
     someUser.age+=inc
     return someUser
 }
