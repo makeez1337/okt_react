@@ -6,7 +6,7 @@ import css from './MoviesPage.module.css'
 const MoviesPage = () => {
 
     return (
-        <div>
+        <div className={css.container}>
             <Header/>
 
             <div className={css.main_menu_wrap}>

@@ -20,12 +20,12 @@ const MovieList = () => {
 
     const paginationArr = [];
 
-    if (pageId < 13) {
+    if (+pageId < 13) {
         for (let i = 1; i <= 13; i++) {
             paginationArr.push(i);
         }
     }
-    if (pageId >= 13 && pageId <= 494) {
+    if (+pageId >= 13 && +pageId <= 494) {
         for (let i = +pageId - 6; i <= +pageId + 6; i++) {
             paginationArr.push(i);
         }
@@ -35,6 +35,8 @@ const MovieList = () => {
             paginationArr.push(i);
         }
     }
+
+    console.log(movies);
 
     return (
         <div className={css.movies_wrap}>
