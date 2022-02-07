@@ -2,11 +2,11 @@ import React from 'react';
 
 import css from './Genre.module.css'
 
-const Genre = ({genre:{name,id}}) => {
+const Genre = ({genre:{name,id,isActive}}) => {
 
     return (
-        <div className={css.genre}>
-            <h5>{name}</h5>
+        <div>
+            <h5 className={`${css.genre}`}>{name}</h5>
         </div>
     );
 };

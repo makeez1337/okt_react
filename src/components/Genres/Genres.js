@@ -18,11 +18,10 @@ const Genres = () => {
     },[])
 
 
-
     return (
         <div className={css.genres_wrap}>
             {
-                genres.genres && genres.genres.map(genre => <Genre genre={genre} key={genre.id}/>)
+                genres && genres.map(genre => <Genre genre={genre} key={genre.id}/>)
             }
         </div>
     );

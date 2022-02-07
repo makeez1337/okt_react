@@ -10,10 +10,10 @@ const initialState = {
 
 export const getMovieThunk = createAsyncThunk(
     'movieSlice/getMovieThunk',
-    async ({page},{rejectWithValue}) => {
+    async ({page}, {rejectWithValue}) => {
         try {
             return await movieService.getByPage(page);
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e);
         }
     }
@@ -21,10 +21,10 @@ export const getMovieThunk = createAsyncThunk(
 
 export const getGenresThunk = createAsyncThunk(
     'movieSlice/getGenresThunk',
-    async (_,{rejectWithValue})=>{
+    async (_, {rejectWithValue}) => {
         try {
             return await movieService.getGenres();
-        }catch (e) {
+        } catch (e) {
             return rejectWithValue(e);
         }
     }
@@ -32,17 +32,19 @@ export const getGenresThunk = createAsyncThunk(
 
 
 const movieSlice = createSlice({
-    name:'movieSlice',
+    name: 'movieSlice',
     initialState,
     reducers: {
 
     },
-    extraReducers:{
+    extraReducers: {
         [getMovieThunk.fulfilled]: (state, action) => {
             state.movies = action.payload.results;
         },
-        [getGenresThunk.fulfilled]: (state,action) => {
-            state.genres = action.payload;
+        [getGenresThunk.fulfilled]: (state, action) => {
+            state.genres = action.payload.genres.map(genre => {
+                return {...genre, isActive: false};
+            })
         }
     }
 });

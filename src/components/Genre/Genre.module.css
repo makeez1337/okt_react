@@ -1,4 +1,9 @@
-h5 {
+h5:hover {
+    cursor: pointer;
+}
+
+
+.genre {
     background-color: orange;
     padding: 10px;
     border-radius: 3px;

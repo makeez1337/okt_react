@@ -24,19 +24,16 @@ const MovieList = () => {
         for (let i = 1; i <= 13; i++) {
             paginationArr.push(i);
         }
-    }
-    if (+pageId >= 13 && +pageId <= 494) {
+    } else if (+pageId >= 13 && +pageId <= 494) {
         for (let i = +pageId - 6; i <= +pageId + 6; i++) {
             paginationArr.push(i);
         }
-    }
-    if (+pageId > 494) {
+    } else if (+pageId > 494) {
         for (let i = 488; i <= +totalPages; i++) {
             paginationArr.push(i);
         }
     }
 
-    console.log(movies);
 
     return (
         <div className={css.movies_wrap}>
@@ -45,7 +42,7 @@ const MovieList = () => {
 
             <div className={css.pagination}>
                 {
-                    paginationArr.length !== 0 && paginationArr.map((val,index) => {
+                    paginationArr.length !== 0 && paginationArr.map((val, index) => {
                         return val === +pageId ?
                             <Link key={index} to={`/movie/page=${val}`}>
                                 <button className={`${css.btn_style} ${css.isActive}`}>{val}</button>
