@@ -36,19 +36,26 @@ const MovieList = () => {
         }
     }
 
-
-    console.log(paginationArr);
-
     return (
         <div className={css.movies_wrap}>
+
             {movies && movies.map(movie => <MovieListCard movie={movie} key={movie.id}/>)}
-            <div>{
-                paginationArr.length !== 0 && paginationArr.map((val) => {
-                    return <Link to={`/movie/page=${val}`}>
-                        <button>{val}</button>
-                    </Link>
-                })
-            }</div>
+
+            <div className={css.pagination}>
+                {
+                    paginationArr.length !== 0 && paginationArr.map((val,index) => {
+                        return val === +pageId ?
+                            <Link key={index} to={`/movie/page=${val}`}>
+                                <button className={`${css.btn_style} ${css.isActive}`}>{val}</button>
+                            </Link>
+                            :
+                            <Link key={index} to={`/movie/page=${val}`}>
+                                <button className={css.btn_style}>{val}</button>
+                            </Link>
+                    })
+                }
+            </div>
+
         </div>
 
 

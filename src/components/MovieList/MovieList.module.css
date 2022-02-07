@@ -6,5 +6,21 @@
 }
 
 .pagination {
+    padding: 0 0 50px 0;
+    display: flex;
+}
 
+.btn_style {
+    background-color: silver;
+    border-radius: 3px;
+    font-weight: 700;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.isActive {
+    background-color: orange;
 }
