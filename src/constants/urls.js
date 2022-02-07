@@ -4,5 +4,6 @@ export default baseURL;
 
 export const urls = {
     discover: '/discover',
-    movie: '/movie'
+    movie: '/movie',
+    genres: '/genre/movie/list'
 }

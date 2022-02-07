@@ -1,0 +1,15 @@
+.movie_card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.title_style {
+    color: silver;
+    font-weight: 900;
+}
+
+img {
+    width: 400px;
+    height: 225px;
+}

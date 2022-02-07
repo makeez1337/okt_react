@@ -1,0 +1,15 @@
+.logo_size {
+    height: 50px;
+    width: 50px;
+}
+
+.text_style {
+    font-weight: 700;
+}
+
+.user_container {
+    margin-right: 70px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
