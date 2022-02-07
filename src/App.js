@@ -1,17 +1,12 @@
 import {Routes, Route} from "react-router-dom";
-import {axiosService} from "./services";
-import {useEffect} from "react";
+
+import MoviesPage from "./pages/MoviesPage/MoviesPage";
 
 function App() {
 
-
-    useEffect(()=>{
-    axiosService.get('/movie').then(res => res.data).then(res => console.log(res))
-    },[])
-
     return (
         <Routes>
-
+            <Route path={'/movie/page=:pageId'} element={<MoviesPage/>}/>
 
         </Routes>
     );
