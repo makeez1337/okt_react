@@ -3,11 +3,14 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    align-items: center;
 }
 
 .pagination {
     padding: 0 0 50px 0;
     display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .btn_style {

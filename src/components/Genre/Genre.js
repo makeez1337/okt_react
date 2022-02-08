@@ -10,11 +10,12 @@ const Genre = ({genre: {name, id, isActive}}) => {
 
 
     return (
-        <div onClick={() => {
-            dispatch(addGenre(id));
-            console.log(isActive);
-        }}>
-            <h5 className={`${css.genre}`}>{name}</h5>
+        <div>
+            <h5
+                onClick={() => {
+                    dispatch(addGenre(id));
+                }}
+                className={`${isActive ? css.active : css.genre}`}>{name}</h5>
         </div>
     );
 };

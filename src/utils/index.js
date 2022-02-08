@@ -1,1 +1,2 @@
-export * from './paginator'
+export * from './moviePaginator'
+export * from './movieFilterPaginator'

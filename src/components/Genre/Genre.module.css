@@ -10,5 +10,9 @@ h5:hover {
 }
 
 .active {
-
+    background-color: orange;
+    padding: 10px;
+    border-radius: 3px;
+    border: 2px solid;
+    box-sizing: border-box;
 }

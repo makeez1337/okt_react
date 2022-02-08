@@ -1,11 +1,11 @@
 import {useEffect} from "react";
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import {getMovieThunk} from "../../store";
 import {MovieListCard} from "../MovieListCard/MovieListCard";
 import css from './MovieList.module.css'
-import {paginator} from "../../utils";
+import {moviePaginator, movieFilterPaginator} from "../../utils";
 
 const MovieList = () => {
 
@@ -13,23 +13,34 @@ const MovieList = () => {
 
     const dispatch = useDispatch();
 
-    const {movies, totalPages} = useSelector(state => state.movieReducer);
+    const {movies, totalPages, totalFilteredPages, activeGenres} = useSelector(state => state.movieReducer);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(getMovieThunk({page: pageId}));
-    }, [pageId])
+        if (!activeGenres.length) {
+            dispatch(getMovieThunk({page: pageId}));
+            navigate(`/movie/page=${pageId}`)
+        }
+    }, [pageId, activeGenres])
+
 
     const paginationArr = [];
 
     const pageIdNumber = +pageId;
 
-    paginator(pageIdNumber, paginationArr, totalPages);
+    totalFilteredPages === null ?
+        moviePaginator(pageIdNumber, paginationArr, totalPages)
+        :
+        movieFilterPaginator(pageIdNumber, paginationArr, totalFilteredPages);
 
 
     return (
-        <div className={css.movies_wrap}>
+        <div>
+            <div className={css.movies_wrap}>
 
-            {movies && movies.map(movie => <MovieListCard movie={movie} key={movie.id}/>)}
+                {movies && movies.map(movie => <MovieListCard movie={movie} key={movie.id}/>)}
+            </div>
 
             <div className={css.pagination}>
                 {
