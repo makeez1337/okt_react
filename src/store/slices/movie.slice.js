@@ -35,7 +35,15 @@ const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
     reducers: {
+        addGenre: (state,action) => {
 
+            state.genres.map(genre => {
+                if (genre.id === action.payload) {
+                    genre.isActive = !genre.isActive;
+                }
+                return genre;
+            })
+        }
     },
     extraReducers: {
         [getMovieThunk.fulfilled]: (state, action) => {
@@ -50,5 +58,7 @@ const movieSlice = createSlice({
 });
 
 const movieReducer = movieSlice.reducer;
+
+export const {addGenre} = movieSlice.actions;
 
 export default movieReducer;
