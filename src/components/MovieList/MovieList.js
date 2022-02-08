@@ -29,10 +29,10 @@ const MovieList = () => {
 
     const pageIdNumber = +pageId;
 
-    totalFilteredPages === null ?
-        moviePaginator(pageIdNumber, paginationArr, totalPages)
+    totalFilteredPages !== null ?
+        movieFilterPaginator(pageIdNumber, paginationArr, totalFilteredPages)
         :
-        movieFilterPaginator(pageIdNumber, paginationArr, totalFilteredPages);
+        moviePaginator(pageIdNumber, paginationArr, totalPages)
 
 
     return (

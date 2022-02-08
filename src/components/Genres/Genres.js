@@ -27,13 +27,17 @@ const Genres = () => {
         if (activeGenres.length) {
             const genresIds = [];
             const genresName = [];
+
             for (const element of activeGenres) {
                 genresIds.push(element.id);
                 genresName.push(element.name);
             }
+
             const genreIdsStr = genresIds.toString();
             const genreNamesStr = genresName.toString().toLowerCase();
+
             dispatch(getMoviesByGenre({genres:genreIdsStr,page:+pageId}));
+
             navigate(`/movie/page=${pageId}/with_genres=${genreNamesStr}`);
         }
     }, [activeGenres.length,+pageId])
