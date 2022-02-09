@@ -2,11 +2,24 @@
 
 }
 
-
 .movie_info {
-
+    font-size: 50px;
+    color: yellow;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: 900;
 }
 
 .movie_trailer {
 
 }
+
+
+
+.header {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+

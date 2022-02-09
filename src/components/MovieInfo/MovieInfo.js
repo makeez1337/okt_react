@@ -7,36 +7,27 @@ import css from './MovieInfo.module.css'
 const MovieInfo = () => {
 
     const {state} = useLocation();
-    console.log(state);
 
-    const {backdrop_path} = state
+    const {backdrop_path, genre_ids, original_language, overview, release_date, original_title, vote_average} = state
+
 
     const background = `https://image.tmdb.org/t/p/original${backdrop_path}`;
 
     const backgroundStyle = {
-        backgroundImage:  `url(${background})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${background})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',
         height: '100vh',
-        filter: 'brightness(60%)'
-
     }
-
 
     return (
         <div>
             <Header/>
-            <div  style={backgroundStyle} className={css.container}>
-
+            <div style={backgroundStyle}>
                 <div className={css.movie_info}>
-
+                    <div className={css.header}>{original_title}</div>
                 </div>
-
-                <div className={css.movie_trailer}>
-
-                </div>
-
             </div>
         </div>
     );

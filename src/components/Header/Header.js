@@ -8,7 +8,7 @@ import {UserInfo} from "../UserInfo/UserInfo";
 const Header = () => {
     return (
         <div className={css.header_style}>
-            <Link to={'/movie/page=1'}>MOVIES PAGE</Link>
+            <Link to={'/movie/page=1'}><span className={css.nav}>MOVIES PAGE</span></Link>
             <UserInfo/>
         </div>
     );
