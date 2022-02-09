@@ -4,6 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {PosterPreview} from "../PosterPreview/PosterPreview";
 import css from './MovieListCard.module.css'
 import star from '../../images/star_rating/star.png'
+import {movieCardPreview} from "../../utils";
 
 const MovieListCard = ({movie}) => {
 
@@ -14,14 +15,26 @@ const MovieListCard = ({movie}) => {
     const navigate = useNavigate();
 
 
-    const {original_title, id, backdrop_path, release_date, vote_average, original_language, poster_path} = movie;
+    const {
+        original_title,
+        id,
+        backdrop_path,
+        release_date,
+        vote_average,
+        original_language,
+        poster_path,
+        overview
+    } = movie;
 
-    const imgURL = `https://image.tmdb.org/t/p/w400${poster_path}`
+
+    const substrOverview = movieCardPreview(overview);
+
+    const imgURL = `https://image.tmdb.org/t/p/w400${poster_path}`;
 
     const onMouseEnter = () => setStyle({display: 'block'});
     const onMouseLeave = () => setStyle({display: 'none'});
 
-    const brightnessDark = () => setBrightness({filter: 'brightness(40%)',height:'100%'});
+    const brightnessDark = () => setBrightness({filter: 'brightness(40%)', height: '100%'});
     const brightnessDefault = () => setBrightness({filter: 'brightness(100%)'});
 
     return (
@@ -49,6 +62,10 @@ const MovieListCard = ({movie}) => {
 
                     <div><span className={css.text_bfr_details}>Language:</span> <span
                         className={css.text_details}>{original_language}</span></div>
+
+                    <div className={css.overview}>
+                        <span className={css.text_bfr_details}>Overview:</span> <span className={css.text_details}>{substrOverview}</span>
+                    </div>
                 </div>
             </div>
         </Link>
