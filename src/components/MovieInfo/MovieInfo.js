@@ -8,27 +8,35 @@ const MovieInfo = () => {
 
     const {state} = useLocation();
     console.log(state);
+
     const {backdrop_path} = state
-    console.log(backdrop_path);
+
     const background = `https://image.tmdb.org/t/p/original${backdrop_path}`;
+
+    const backgroundStyle = {
+        backgroundImage:  `url(${background})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        height: '100vh',
+        filter: 'brightness(60%)'
+
+    }
 
 
     return (
         <div>
             <Header/>
-            <div className={css.container} style={{
-                backgroundImage: `url(${background})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center center',
-                backgroundRepeat: 'no-repeat',
-                height: '100vh'
-            }}>
+            <div  style={backgroundStyle} className={css.container}>
+
                 <div className={css.movie_info}>
 
                 </div>
+
                 <div className={css.movie_trailer}>
 
                 </div>
+
             </div>
         </div>
     );

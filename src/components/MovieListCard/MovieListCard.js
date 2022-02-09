@@ -9,6 +9,8 @@ const MovieListCard = ({movie}) => {
 
     const [style, setStyle] = useState({display: 'none'});
 
+    const [brightness, setBrightness] = useState({filter: 'brightness(100%)'});
+
     const navigate = useNavigate();
 
 
@@ -19,33 +21,37 @@ const MovieListCard = ({movie}) => {
     const onMouseEnter = () => setStyle({display: 'block'});
     const onMouseLeave = () => setStyle({display: 'none'});
 
+    const brightnessDark = () => setBrightness({filter: 'brightness(40%)',height:'100%'});
+    const brightnessDefault = () => setBrightness({filter: 'brightness(100%)'});
+
     return (
-        <div className={css.movie_card}
-             onMouseEnter={onMouseEnter}
-             onMouseLeave={onMouseLeave}
-        >
-            <span className={css.title_style}>{original_title}</span>
-            <PosterPreview movie={movie} img={imgURL}/>
+        <Link state={movie} to={`/movie/${id}`}>
+            <div className={css.movie_card}
+                 onMouseEnter={onMouseEnter}
+                 onMouseLeave={onMouseLeave}
+            >
+                <span className={css.title_style}>{original_title}</span>
+                <div style={brightness}><PosterPreview movie={movie} img={imgURL}/></div>
 
-            <div className={css.preview} style={style}>
-                <div><span className={css.text_bfr_details}>Release:</span> <span
-                    className={css.text_details}>{release_date}</span></div>
+                <div
+                    onMouseEnter={brightnessDark}
+                    onMouseLeave={brightnessDefault}
+                    className={css.preview} style={style}>
 
-                <div>
-                    <span className={css.text_bfr_details}>Rate:</span>
-                    <span className={css.text_details}>{vote_average}</span>
-                    <span className={css.star}><img src={star} alt=""/></span>
+                    <div><span className={css.text_bfr_details}>Release:</span> <span
+                        className={css.text_details}>{release_date}</span></div>
+
+                    <div>
+                        <span className={css.text_bfr_details}>Rate:</span>
+                        <span className={css.text_details}>{vote_average}</span>
+                        <span className={css.star}><img src={star} alt=""/></span>
+                    </div>
+
+                    <div><span className={css.text_bfr_details}>Language:</span> <span
+                        className={css.text_details}>{original_language}</span></div>
                 </div>
-
-                <div><span className={css.text_bfr_details}>Language:</span> <span
-                    className={css.text_details}>{original_language}</span></div>
-
-                <Link state={movie} to={`/movie/${id}`}>
-                    <button className={css.btn_style}>DETAILS</button>
-                </Link>
-
             </div>
-        </div>
+        </Link>
     );
 };
 
