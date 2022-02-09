@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
-import {movieService} from "../../services/movie.service";
+import {movieService} from "../../services";
 
 const initialState = {
     movies: [],
@@ -69,7 +69,7 @@ const movieSlice = createSlice({
         },
         [getMoviesByGenre.fulfilled]:(state,action) => {
             console.log(action.payload);
-            state.totalFilteredPages = action.payload.total_pages;
+            state.totalFilteredPages = action.payload['total_pages'];
             state.movies = action.payload.results;
         }
     }

@@ -1,19 +1,18 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useParams} from "react-router-dom";
 
-import {getGenresThunk, getMoviesByGenre, getMovieThunk} from "../../store";
+import {getGenresThunk, getMoviesByGenre} from "../../store";
 import movieReducer from "../../store/slices/movie.slice";
 import {Genre} from "../Genre/Genre";
 import css from './Genres.module.css'
-import {movieService} from "../../services/movie.service";
-import {useNavigate, useParams} from "react-router-dom";
 
 
 const Genres = () => {
 
     const dispatch = useDispatch();
 
-    const {genres, activeGenres} = useSelector(state => state.movieReducer);
+    const {genres, activeGenres} = useSelector(state => state['movieReducer']);
 
     const {pageId} = useParams();
 
@@ -25,20 +24,21 @@ const Genres = () => {
 
     useEffect(() => {
         if (activeGenres.length) {
-            const genresIds = [];
-            const genresName = [];
 
-            for (const element of activeGenres) {
-                genresIds.push(element.id);
-                genresName.push(element.name);
+            const activeGenreIds = [];
+            const activeGenreNames = [];
+
+            for (const activeGenre of activeGenres) {
+                activeGenreIds.push(activeGenre.id);
+                activeGenreNames.push(activeGenre.name);
             }
 
-            const genreIdsStr = genresIds.toString();
-            const genreNamesStr = genresName.toString().toLowerCase();
+            const activeGenreIdsStr = activeGenreIds.toString();
+            const activeGenreNamesStr = activeGenreNames.toString().toLowerCase();
 
-            dispatch(getMoviesByGenre({genres:genreIdsStr,page:+pageId}));
+            dispatch(getMoviesByGenre({genres:activeGenreIdsStr,page:+pageId}));
 
-            navigate(`/movie/page=${pageId}/with_genres=${genreNamesStr}`);
+            navigate(`/movie/page=${pageId}/with_genres=${activeGenreNamesStr}`);
         }
     }, [activeGenres.length,+pageId])
 

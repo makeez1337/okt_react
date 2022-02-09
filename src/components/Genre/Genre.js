@@ -1,7 +1,7 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
 
 import css from './Genre.module.css'
-import {useDispatch} from "react-redux";
 import {addGenre} from "../../store";
 
 const Genre = ({genre: {name, id, isActive}}) => {
@@ -11,11 +11,14 @@ const Genre = ({genre: {name, id, isActive}}) => {
 
     return (
         <div>
+
             <h5
                 onClick={() => {
                     dispatch(addGenre(id));
                 }}
-                className={`${isActive ? css.active : css.genre}`}>{name}</h5>
+                className={`${isActive ? css.active : css.genre}`}>{name}
+            </h5>
+
         </div>
     );
 };

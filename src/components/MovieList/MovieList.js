@@ -25,9 +25,9 @@ const MovieList = () => {
     }, [pageId, activeGenres])
 
 
-    const paginationArr = [];
-
     const pageIdNumber = +pageId;
+
+    const paginationArr = [];
 
     totalFilteredPages !== null ?
         movieFilterPaginator(pageIdNumber, paginationArr, totalFilteredPages)

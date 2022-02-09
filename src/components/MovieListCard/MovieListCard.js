@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {Link, useNavigate} from "react-router-dom";
 
 import {PosterPreview} from "../PosterPreview/PosterPreview";
 import css from './MovieListCard.module.css'
@@ -7,6 +8,8 @@ import star from '../../images/star_rating/star.png'
 const MovieListCard = ({movie}) => {
 
     const [style, setStyle] = useState({display: 'none'});
+
+    const navigate = useNavigate();
 
 
     const {original_title, id, backdrop_path, release_date, vote_average, original_language, poster_path} = movie;
@@ -37,7 +40,9 @@ const MovieListCard = ({movie}) => {
                 <div><span className={css.text_bfr_details}>Language:</span> <span
                     className={css.text_details}>{original_language}</span></div>
 
-                <button className={css.btn_style}>DETAILS</button>
+                <Link state={movie} to={`/movie/${id}`}>
+                    <button className={css.btn_style}>DETAILS</button>
+                </Link>
 
             </div>
         </div>

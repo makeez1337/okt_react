@@ -7,6 +7,7 @@ const MoviesPage = () => {
 
     return (
         <div className={css.container}>
+
             <Header/>
 
             <div className={css.main_menu_wrap}>
