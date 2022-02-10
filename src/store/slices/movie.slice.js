@@ -7,7 +7,8 @@ const initialState = {
     genres: [],
     totalPages: 500,
     activeGenres: [],
-    totalFilteredPages: null
+    totalFilteredPages: null,
+    videos: null
 }
 
 export const getMovieThunk = createAsyncThunk(
@@ -34,10 +35,21 @@ export const getGenresThunk = createAsyncThunk(
 
 export const getMoviesByGenre = createAsyncThunk(
     'movieSlice/getMovieByGenre',
-    async ({genres,page},{rejectWithValue}) => {
+    async ({genres, page}, {rejectWithValue}) => {
         try {
-            return await movieService.getByGenre(genres,page);
-        }catch (e) {
+            return await movieService.getByGenre(genres, page);
+        } catch (e) {
+            return rejectWithValue(e);
+        }
+    }
+)
+
+export const getVideoThunk = createAsyncThunk(
+    'movieSlice/getVideoThunk',
+    async ({id},{rejectWithValue}) => {
+        try {
+            return await movieService.getVideoById(id);
+        } catch (e) {
             return rejectWithValue(e);
         }
     }
@@ -48,7 +60,7 @@ const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
     reducers: {
-        addGenre: (state,action) => {
+        addGenre: (state, action) => {
             state.genres.map(genre => {
                 if (genre.id === action.payload) {
                     genre.isActive = !genre.isActive;
@@ -67,10 +79,13 @@ const movieSlice = createSlice({
                 return {...genre, isActive: false};
             })
         },
-        [getMoviesByGenre.fulfilled]:(state,action) => {
+        [getMoviesByGenre.fulfilled]: (state, action) => {
             console.log(action.payload);
             state.totalFilteredPages = action.payload['total_pages'];
             state.movies = action.payload.results;
+        },
+        [getVideoThunk.fulfilled]: (state,action) => {
+            state.videos = action.payload.results;
         }
     }
 });
