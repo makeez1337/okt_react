@@ -31,3 +31,7 @@
 .darkMode {
     background-color: black;
 }
+
+button:hover {
+    cursor: pointer;
+}
