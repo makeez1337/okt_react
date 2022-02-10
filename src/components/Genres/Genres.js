@@ -43,7 +43,6 @@ const Genres = () => {
         }
     }, [activeGenres.length, +pageId,activeGenres])
 
-    console.log(darkMode);
 
 
     return (

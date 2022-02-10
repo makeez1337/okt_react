@@ -14,7 +14,6 @@ const Genre = ({genre: {name, id, isActive}}) => {
         dispatch(addGenre(id));
     };
 
-    console.log(isActive);
 
     return (
         <div>

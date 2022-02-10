@@ -43,6 +43,14 @@ const MovieInfo = () => {
         height: '100vh',
     }
 
+    const backgroundStyleDark = {
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(${background})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        height: '100vh',
+    }
+
     const genresNamesArr = [];
 
     getGenreNames(genres, genre_ids, genresNamesArr);
@@ -55,7 +63,7 @@ const MovieInfo = () => {
 
         if (videos.length) {
             const YOUTUBE_KEY = videos[0]?.key;
-            return setVideoURL(`http://www.youtube.com/embed/${YOUTUBE_KEY}`);
+            return setVideoURL(`https://www.youtube.com/embed/${YOUTUBE_KEY}`);
         }
 
         if (!videos.length) {
@@ -67,7 +75,7 @@ const MovieInfo = () => {
     return (
         <div>
             <Header/>
-            <div style={backgroundStyle}>
+            <div style={darkMode ? backgroundStyleDark : backgroundStyle}>
                 <div className={css.movie_info}>
 
                     <div className={css.title_wrap}><span className={darkMode ?
