@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import React, {useState} from 'react';
+import {Link} from "react-router-dom";
 
 import {PosterPreview} from "../PosterPreview/PosterPreview";
 import css from './MovieListCard.module.css'
 import star from '../../images/star_rating/star.png'
 import {movieCardPreview} from "../../utils";
+import {useSelector} from "react-redux";
 
 const MovieListCard = ({movie}) => {
 
@@ -12,13 +13,11 @@ const MovieListCard = ({movie}) => {
 
     const [brightness, setBrightness] = useState({filter: 'brightness(100%)'});
 
-    const navigate = useNavigate();
-
+    const {genres} = useSelector(prev => prev['movieReducer']);
 
     const {
         original_title,
         id,
-        backdrop_path,
         release_date,
         vote_average,
         original_language,
@@ -38,7 +37,7 @@ const MovieListCard = ({movie}) => {
     const brightnessDefault = () => setBrightness({filter: 'brightness(100%)'});
 
     return (
-        <Link state={movie} to={`/movie/${id}`}>
+        <Link state={{movie,genres}} to={`/movie/${id}`}>
             <div className={css.movie_card}
                  onMouseEnter={onMouseEnter}
                  onMouseLeave={onMouseLeave}
@@ -63,8 +62,9 @@ const MovieListCard = ({movie}) => {
                     <div><span className={css.text_bfr_details}>Language:</span> <span
                         className={css.text_details}>{original_language}</span></div>
 
-                    <div className={css.overview}>
-                        <span className={css.text_bfr_details}>Overview:</span> <span className={css.text_details}>{substrOverview}</span>
+                    <div>
+                        <span className={css.text_bfr_details}>Overview:</span> <span
+                        className={css.text_details}>{substrOverview}</span>
                     </div>
                 </div>
             </div>
