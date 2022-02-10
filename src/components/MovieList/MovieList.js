@@ -22,7 +22,7 @@ const MovieList = () => {
             dispatch(getMovieThunk({page: pageId}));
             navigate(`/movie/page=${pageId}`)
         }
-    }, [pageId, activeGenres])
+    }, [+pageId, activeGenres])
 
 
     const pageIdNumber = +pageId;

@@ -42,6 +42,8 @@ const Genres = () => {
         }
     }, [activeGenres.length,+pageId])
 
+    console.log(activeGenres);
+
 
     return (
         <div className={css.genres_wrap}>

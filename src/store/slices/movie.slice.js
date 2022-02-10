@@ -68,6 +68,9 @@ const movieSlice = createSlice({
                 return genre;
             })
             state.activeGenres = state.genres.filter(genre => genre.isActive);
+        },
+        removeActiveGenres : (state,action) => {
+            state.activeGenres = [];
         }
     },
     extraReducers: {
@@ -92,6 +95,6 @@ const movieSlice = createSlice({
 
 const movieReducer = movieSlice.reducer;
 
-export const {addGenre} = movieSlice.actions;
+export const {addGenre,removeActiveGenres} = movieSlice.actions;
 
 export default movieReducer;

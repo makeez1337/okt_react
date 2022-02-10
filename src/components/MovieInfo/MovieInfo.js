@@ -50,15 +50,15 @@ const MovieInfo = () => {
 
     useEffect(() => {
         dispatch(getVideoThunk({id}));
-    }, [id]);
 
-
-    useEffect(()=>{
         if (videos.length) {
-            const YOUTUBE_KEY = videos[0].key;
-            setVideoURL(`http://www.youtube.com/embed/${YOUTUBE_KEY}`);
+        const YOUTUBE_KEY = videos[0]?.key;
+        setVideoURL(`http://www.youtube.com/embed/${YOUTUBE_KEY}`);
+        }else {
+            setVideoURL('');
         }
-    },[movieId,id])
+    }, [id,videoURL,+movieId,videos.length]);
+
 
     console.log(videoURL);
 
@@ -73,11 +73,10 @@ const MovieInfo = () => {
                     <div className={css.genres_wrap}>Genres: <span className={css.clr_orng}>{genreNames}</span></div>
                     <div className={css.overview_wrap}><span className={css.overview}>Overview: <span
                         className={css.clr_orng}>{overview}</span></span></div>
-                    {videoURL &&
                         <div className={css.iframe_wrap}>
-                        <iframe width="900" height="650" src={videoURL}
-                                frameBorder="0" allowFullScreen/>
-                    </div>}
+                            <iframe width="600" height="400" src={videoURL}
+                                    frameBorder="0" allowFullScreen/>
+                        </div>
                 </div>
             </div>
         </div>
