@@ -8,7 +8,7 @@ const initialState = {
     totalPages: 500,
     activeGenres: [],
     totalFilteredPages: null,
-    videos: null
+    videos: []
 }
 
 export const getMovieThunk = createAsyncThunk(
