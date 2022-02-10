@@ -71,6 +71,10 @@ const movieSlice = createSlice({
         },
         removeActiveGenres : (state,action) => {
             state.activeGenres = [];
+            state.totalFilteredPages = null;
+            state.genres = state.genres.map(genre => {
+                return {...genre, isActive: false}
+            })
         }
     },
     extraReducers: {
@@ -83,7 +87,6 @@ const movieSlice = createSlice({
             })
         },
         [getMoviesByGenre.fulfilled]: (state, action) => {
-            console.log(action.payload);
             state.totalFilteredPages = action.payload['total_pages'];
             state.movies = action.payload.results;
         },

@@ -14,6 +14,8 @@ const MovieListCard = ({movie}) => {
     const [brightness, setBrightness] = useState({filter: 'brightness(100%)'});
 
     const {genres} = useSelector(prev => prev['movieReducer']);
+    const {darkMode} = useSelector(state => state['darkmodeReducer']);
+
 
     const {
         original_title,
@@ -42,7 +44,7 @@ const MovieListCard = ({movie}) => {
                  onMouseEnter={onMouseEnter}
                  onMouseLeave={onMouseLeave}
             >
-                <span className={css.title_style}>{original_title}</span>
+                <span className={darkMode ? `${css.title_style} ${css.darkMode}` :`${css.title_style}`}>{original_title}</span>
                 <div style={brightness}><PosterPreview movie={movie} img={imgURL}/></div>
 
                 <div

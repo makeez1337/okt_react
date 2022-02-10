@@ -15,4 +15,9 @@ h5:hover {
     border-radius: 3px;
     border: 2px solid;
     box-sizing: border-box;
+
+}
+
+.darkMode {
+    border: 2px solid white;
 }

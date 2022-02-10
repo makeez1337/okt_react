@@ -13,6 +13,7 @@ const Genres = () => {
     const dispatch = useDispatch();
 
     const {genres, activeGenres} = useSelector(state => state['movieReducer']);
+    const {darkMode} = useSelector(state => state['darkmodeReducer']);
 
     const {pageId} = useParams();
 
@@ -36,17 +37,17 @@ const Genres = () => {
             const activeGenreIdsStr = activeGenreIds.toString();
             const activeGenreNamesStr = activeGenreNames.toString().toLowerCase();
 
-            dispatch(getMoviesByGenre({genres:activeGenreIdsStr,page:+pageId}));
+            dispatch(getMoviesByGenre({genres: activeGenreIdsStr, page: +pageId}));
 
             navigate(`/movie/page=${pageId}/with_genres=${activeGenreNamesStr}`);
         }
-    }, [activeGenres.length,+pageId])
+    }, [activeGenres.length, +pageId,activeGenres])
 
-    console.log(activeGenres);
+    console.log(darkMode);
 
 
     return (
-        <div className={css.genres_wrap}>
+        <div className={darkMode ? `${css.genres_wrap} ${css.darkMode}` : `${css.genres_wrap}`}>
             {
                 genres && genres.map(genre => <Genre genre={genre} key={genre.id}/>)
             }

@@ -10,7 +10,7 @@
     padding: 0 0 50px 0;
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    padding-top: 10px;
 }
 
 .btn_style {
@@ -26,4 +26,8 @@
 
 .isActive {
     background-color: orange;
+}
+
+.darkMode {
+    background-color: black;
 }
