@@ -4,11 +4,17 @@ import {movieService} from "../../services";
 
 const initialState = {
     movies: [],
+    moviesStatus: null,
+    moviesErr: null,
     genres: [],
-    totalPages: 500,
+    genresStatus: null,
+    genresErr: null,
     activeGenres: [],
-    totalFilteredPages: null,
-    videos: []
+    filteredGenresStatus: null,
+    filteredGenresErr: null,
+    videos: [],
+    totalPages: 500,
+    totalFilteredPages: null
 }
 
 export const getMovieThunk = createAsyncThunk(
@@ -17,7 +23,7 @@ export const getMovieThunk = createAsyncThunk(
         try {
             return await movieService.getByPage(page);
         } catch (e) {
-            return rejectWithValue(e);
+            return rejectWithValue(e.message);
         }
     }
 )
@@ -28,7 +34,7 @@ export const getGenresThunk = createAsyncThunk(
         try {
             return await movieService.getGenres();
         } catch (e) {
-            return rejectWithValue(e);
+            return rejectWithValue(e.message);
         }
     }
 )
@@ -39,7 +45,7 @@ export const getMoviesByGenre = createAsyncThunk(
         try {
             return await movieService.getByGenre(genres, page);
         } catch (e) {
-            return rejectWithValue(e);
+            return rejectWithValue(e.message);
         }
     }
 )
@@ -50,7 +56,7 @@ export const getVideoThunk = createAsyncThunk(
         try {
             return await movieService.getVideoById(id);
         } catch (e) {
-            return rejectWithValue(e);
+            return rejectWithValue(e.message);
         }
     }
 )
@@ -81,21 +87,57 @@ const movieSlice = createSlice({
         }
     },
     extraReducers: {
+
+        [getMovieThunk.pending]: (state, action) => {
+            state.moviesStatus = 'loading';
+            state.moviesErr = null;
+        },
         [getMovieThunk.fulfilled]: (state, action) => {
             state.movies = action.payload.results;
+            state.moviesStatus = 'fulfilled';
+            state.moviesErr = null;
         },
+        [getMovieThunk.rejected]: (state, action) => {
+            state.moviesStatus = 'rejected';
+            state.moviesErr = action.payload;
+        },
+
         [getGenresThunk.pending]: (state) => {
             state.genres = [];
+            state.genresStatus = 'loading';
+            state.genresErr = null
         },
         [getGenresThunk.fulfilled]: (state, action) => {
             state.genres = action.payload.genres.map(genre => {
                 return {...genre, isActive: false};
             })
+            state.genresStatus = 'fulfilled';
+            state.genresErr = null;
+        },
+        [getGenresThunk.rejected]: (state, action) => {
+            state.genres = [];
+            state.genresStatus = 'rejected';
+            state.genresErr = action.payload;
+        },
+
+        [getMoviesByGenre.pending]: (state, action) => {
+            state.totalFilteredPages = null
+            state.filteredGenresStatus = 'loading';
+            state.movies = [];
         },
         [getMoviesByGenre.fulfilled]: (state, action) => {
             state.totalFilteredPages = action.payload['total_pages'];
             state.movies = action.payload.results;
+            state.filteredGenresStatus = 'fulfilled';
+
         },
+        [getMoviesByGenre.rejected]: (state, action) => {
+            state.filteredGenresStatus = 'rejected';
+            state.totalFilteredPages = null
+            state.movies = [];
+            state.filteredGenresErr = action.payload;
+        },
+
         [getVideoThunk.fulfilled]: (state, action) => {
             state.videos = action.payload.results;
         }

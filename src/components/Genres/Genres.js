@@ -12,7 +12,7 @@ const Genres = () => {
 
     const dispatch = useDispatch();
 
-    const {genres, activeGenres} = useSelector(state => state['movieReducer']);
+    const {genres, activeGenres,genresStatus,genresErr} = useSelector(state => state['movieReducer']);
 
     const {darkMode} = useSelector(state => state['darkmodeReducer']);
 
@@ -42,7 +42,7 @@ const Genres = () => {
 
             navigate(`/movie/page=${pageId}/with_genres=${activeGenreNamesStr}`);
         }
-    }, [activeGenres.length, +pageId,activeGenres])
+    }, [activeGenres.length, +pageId])
 
 
 
@@ -51,6 +51,8 @@ const Genres = () => {
             {
                 genres && genres.map(genre => <Genre genre={genre} key={genre.id}/>)
             }
+            {genresStatus === 'loading' ? <h1>Loading...</h1> : ''}
+            {genresStatus === 'rejected' ? <h1>{genresErr}</h1> : ''}
         </div>
     );
 };

@@ -13,7 +13,8 @@ const MovieList = () => {
 
     const dispatch = useDispatch();
 
-    const {movies, totalPages, totalFilteredPages, activeGenres,videos} = useSelector(state => state.movieReducer);
+    const {movies, totalPages, totalFilteredPages, activeGenres,videos,moviesStatus,
+        moviesErr, filteredGenresStatus,filteredGenresErr} = useSelector(state => state.movieReducer);
     const {darkMode} = useSelector(state => state['darkmodeReducer']);
 
     const navigate = useNavigate();
@@ -45,6 +46,10 @@ const MovieList = () => {
             <div className={darkMode ? `${css.movies_wrap} ${css.darkMode}` : `${css.movies_wrap}`}>
 
                 {movies && movies.map(movie => <MovieListCard movie={movie} key={movie.id}/>)}
+                {moviesStatus === 'loading' ? <h2 style={darkMode ? {color:'white'} : {}}>Loading...</h2> : ''}
+                {moviesStatus === 'rejected' ? <h2 style={darkMode ? {color:'white'} : {}}>{moviesErr}</h2> : ''}
+                {filteredGenresStatus === 'loading' ? <h2 style={darkMode ? {color:'white'} : {}}>Loading...</h2> : ''}
+                {filteredGenresStatus === 'rejected' ? <h2 style={darkMode ? {color:'white'} : {}}>{filteredGenresErr}</h2> : ''}
             </div>
 
             <div className={darkMode ? `${css.pagination} ${css.darkMode}` :  `${css.pagination}`}>
