@@ -1,4 +1,3 @@
-import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
 import css from './Genre.module.css'
@@ -13,7 +12,6 @@ const Genre = ({genre: {name, id, isActive}}) => {
     const onClick = () => {
         dispatch(addGenre(id));
     };
-
 
     return (
         <div>

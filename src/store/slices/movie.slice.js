@@ -35,7 +35,7 @@ export const getGenresThunk = createAsyncThunk(
 
 export const getMoviesByGenre = createAsyncThunk(
     'movieSlice/getMovieByGenre',
-    async ({genres, page}, {rejectWithValue}) => {
+    async ({genres, page, activeGenresNames}, {rejectWithValue}) => {
         try {
             return await movieService.getByGenre(genres, page);
         } catch (e) {
@@ -46,7 +46,7 @@ export const getMoviesByGenre = createAsyncThunk(
 
 export const getVideoThunk = createAsyncThunk(
     'movieSlice/getVideoThunk',
-    async ({id},{rejectWithValue}) => {
+    async ({id}, {rejectWithValue}) => {
         try {
             return await movieService.getVideoById(id);
         } catch (e) {
@@ -69,20 +69,23 @@ const movieSlice = createSlice({
             })
             state.activeGenres = state.genres.filter(genre => genre.isActive);
         },
-        removeActiveGenres : (state,action) => {
+        removeActiveGenres: (state) => {
             state.activeGenres = [];
             state.totalFilteredPages = null;
             state.genres = state.genres.map(genre => {
                 return {...genre, isActive: false}
             })
         },
-        cancelVideos:(state,action) => {
+        cancelVideos: (state) => {
             state.videos = [];
         }
     },
     extraReducers: {
         [getMovieThunk.fulfilled]: (state, action) => {
             state.movies = action.payload.results;
+        },
+        [getGenresThunk.pending]: (state) => {
+            state.genres = [];
         },
         [getGenresThunk.fulfilled]: (state, action) => {
             state.genres = action.payload.genres.map(genre => {
@@ -93,7 +96,7 @@ const movieSlice = createSlice({
             state.totalFilteredPages = action.payload['total_pages'];
             state.movies = action.payload.results;
         },
-        [getVideoThunk.fulfilled]: (state,action) => {
+        [getVideoThunk.fulfilled]: (state, action) => {
             state.videos = action.payload.results;
         }
     }
@@ -101,6 +104,6 @@ const movieSlice = createSlice({
 
 const movieReducer = movieSlice.reducer;
 
-export const {addGenre,removeActiveGenres,cancelVideos} = movieSlice.actions;
+export const {addGenre, removeActiveGenres, cancelVideos} = movieSlice.actions;
 
 export default movieReducer;

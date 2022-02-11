@@ -13,6 +13,7 @@ const Genres = () => {
     const dispatch = useDispatch();
 
     const {genres, activeGenres} = useSelector(state => state['movieReducer']);
+
     const {darkMode} = useSelector(state => state['darkmodeReducer']);
 
     const {pageId} = useParams();
