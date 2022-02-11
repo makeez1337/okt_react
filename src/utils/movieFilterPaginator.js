@@ -18,3 +18,4 @@ export const movieFilterPaginator = (currentPage, paginationArr, totalFilteredPa
     }
 }
 
+
