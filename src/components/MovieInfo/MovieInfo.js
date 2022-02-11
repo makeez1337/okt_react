@@ -64,7 +64,6 @@ const MovieInfo = () => {
 
         if (videos.length) {
             const YOUTUBE_KEY = videos[0]?.key;
-            console.log(YOUTUBE_KEY);
             setVideoURL(`https://www.youtube.com/embed/${YOUTUBE_KEY}`);
         }
 

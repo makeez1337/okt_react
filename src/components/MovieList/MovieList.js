@@ -38,7 +38,6 @@ const MovieList = () => {
     useEffect(() => {
         dispatch(cancelVideos());
     }, [pageId]);
-    console.log(videos);
 
 
     return (
