@@ -6,16 +6,20 @@ const initialState = {
     movies: [],
     moviesStatus: null,
     moviesErr: null,
+
     genres: [],
     genresStatus: null,
     genresErr: null,
+
     activeGenres: [],
     filteredGenresStatus: null,
     filteredGenresErr: null,
+
     videos: [],
     videosStatus: null,
     videosErr: null,
     videoURL: null,
+
     totalPages: 500,
     totalFilteredPages: null
 }
@@ -132,6 +136,7 @@ const movieSlice = createSlice({
             state.movies = [];
         },
         [getMoviesByGenre.fulfilled]: (state, action) => {
+            console.log(action.payload);
             state.totalFilteredPages = action.payload['total_pages'];
             state.movies = action.payload.results;
             state.filteredGenresStatus = 'fulfilled';

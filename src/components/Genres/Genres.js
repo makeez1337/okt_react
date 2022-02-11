@@ -41,14 +41,8 @@ const Genres = () => {
             dispatch(getMoviesByGenre({genres: activeGenreIdsStr, page: +pageId}));
 
             navigate(`/movie/page=${pageId}/with_genres=${activeGenreNamesStr}`);
-
-
-
         }
     }, [activeGenres.length, +pageId,genresStatus,activeGenres])
-
-
-
 
 
     return (

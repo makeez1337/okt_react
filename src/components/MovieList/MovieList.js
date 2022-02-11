@@ -41,8 +41,11 @@ const MovieList = () => {
     }, [pageId]);
 
 
+
+
     return (
         <div>
+
             <div className={darkMode ? `${css.movies_wrap} ${css.darkMode}` : `${css.movies_wrap}`}>
 
                 {movies && movies.map(movie => <MovieListCard movie={movie} key={movie.id}/>)}

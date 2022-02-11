@@ -8,7 +8,6 @@ const SwitchToggle = () => {
     const {darkMode} = useSelector(prev => prev['darkmodeReducer']);
     const dispatch = useDispatch();
 
-
     return (
         <div>
             <div className="toggle-container">

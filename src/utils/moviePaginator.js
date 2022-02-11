@@ -1,13 +1,13 @@
-export const moviePaginator = (pageIdNumber, paginationArr, totalPages) => {
-    if (pageIdNumber < 13) {
+export const moviePaginator = (currentPage, paginationArr, totalPages) => {
+    if (currentPage < 13) {
         for (let i = 1; i <= 13; i++) {
             paginationArr.push(i);
         }
-    } else if (pageIdNumber >= 13 && pageIdNumber <= totalPages-6) {
-        for (let i = pageIdNumber - 6; i <= pageIdNumber + 6; i++) {
+    } else if (currentPage >= 13 && currentPage <= totalPages-6) {
+        for (let i = currentPage - 6; i <= currentPage + 6; i++) {
             paginationArr.push(i);
         }
-    } else if (pageIdNumber > totalPages-6) {
+    } else if (currentPage > totalPages-6) {
         for (let i = 488; i <= +totalPages; i++) {
             paginationArr.push(i);
         }

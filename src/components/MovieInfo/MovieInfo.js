@@ -124,7 +124,7 @@ const MovieInfo = () => {
                         <iframe width="700" height="500" src={videoURL}
                                 frameBorder="0" allowFullScreen/>
                     </div>
-                    {!videos.length && <h1>No such videos</h1>}
+                    {!videos.length && <h1>This film has no trailer</h1>}
                 </div>
             </div>
         </div>
