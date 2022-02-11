@@ -1,10 +1,9 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-
+import {useDispatch, useSelector} from "react-redux";
 
 import css from './Header.module.css';
 import {UserInfo} from "../UserInfo/UserInfo";
-import {useDispatch, useSelector} from "react-redux";
 import {removeActiveGenres} from "../../store";
 import {SwitchToggle} from "../SwitchToggle/SwitchToggle";
 
