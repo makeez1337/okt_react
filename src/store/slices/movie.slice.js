@@ -128,7 +128,6 @@ const movieSlice = createSlice({
         },
 
         [getMoviesByGenre.pending]: (state) => {
-            state.totalFilteredPages = null
             state.filteredGenresStatus = 'loading';
             state.movies = [];
         },
