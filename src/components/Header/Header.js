@@ -20,9 +20,9 @@ const Header = () => {
 
 
     return (
-        <div className={css.header_style}>
+        <div className={darkMode ? `${css.header_style_dark}`:`${css.header_style}`}>
 
-            <Link onClick={onClick} to={'/movie/page=1'}><span className={darkMode ? `${css.nav} ${css.darkMode}` : `${css.nav}`}>MOVIES PAGE</span></Link>
+            <Link onClick={onClick} to={'/movie/page=1'}><span className={css.nav}>MOVIES PAGE</span></Link>
             <SwitchToggle/>
             <UserInfo/>
 

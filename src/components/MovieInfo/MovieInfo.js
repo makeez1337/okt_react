@@ -16,7 +16,7 @@ const MovieInfo = () => {
     const {videos} = useSelector(prev => prev['movieReducer']);
     const {darkMode} = useSelector(state => state['darkmodeReducer']);
 
-    const [videoURL, setVideoURL] = useState('');
+    const [videoURL, setVideoURL] = useState(null);
 
 
     const {
@@ -59,17 +59,16 @@ const MovieInfo = () => {
 
 
     useEffect(() => {
+
         dispatch(getVideoThunk({id}));
 
         if (videos.length) {
             const YOUTUBE_KEY = videos[0]?.key;
-            return setVideoURL(`https://www.youtube.com/embed/${YOUTUBE_KEY}`);
+            console.log(YOUTUBE_KEY);
+            setVideoURL(`https://www.youtube.com/embed/${YOUTUBE_KEY}`);
         }
 
-        if (!videos.length) {
-            setVideoURL('');
-        }
-    }, [id, videoURL, +movieId, videos.length, original_title, videos]);
+    }, [+movieId, videos.length]);
 
 
     return (
@@ -115,9 +114,9 @@ const MovieInfo = () => {
                         :
                         `${css.overview_wrap}`}>
                         <span className={css.overview}>Overview: <span
-                        className={darkMode ? `${css.darkModefff}`
-                            :
-                            `${css.clr_orng}`}>
+                            className={darkMode ? `${css.darkModefff}`
+                                :
+                                `${css.clr_orng}`}>
                             {overview}
                         </span>
                         </span>

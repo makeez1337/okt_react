@@ -2,7 +2,7 @@ import {useEffect} from "react";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
-import {getMovieThunk} from "../../store";
+import {cancelVideos, getMovieThunk} from "../../store";
 import {MovieListCard} from "../MovieListCard/MovieListCard";
 import css from './MovieList.module.css'
 import {moviePaginator, movieFilterPaginator} from "../../utils";
@@ -13,7 +13,7 @@ const MovieList = () => {
 
     const dispatch = useDispatch();
 
-    const {movies, totalPages, totalFilteredPages, activeGenres} = useSelector(state => state.movieReducer);
+    const {movies, totalPages, totalFilteredPages, activeGenres,videos} = useSelector(state => state.movieReducer);
     const {darkMode} = useSelector(state => state['darkmodeReducer']);
 
     const navigate = useNavigate();
@@ -34,6 +34,11 @@ const MovieList = () => {
         movieFilterPaginator(pageIdNumber, paginationArr, totalFilteredPages)
         :
         moviePaginator(pageIdNumber, paginationArr, totalPages)
+
+    useEffect(() => {
+        dispatch(cancelVideos());
+    }, [pageId]);
+    console.log(videos);
 
 
     return (

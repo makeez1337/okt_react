@@ -75,6 +75,9 @@ const movieSlice = createSlice({
             state.genres = state.genres.map(genre => {
                 return {...genre, isActive: false}
             })
+        },
+        cancelVideos:(state,action) => {
+            state.videos = [];
         }
     },
     extraReducers: {
@@ -98,6 +101,6 @@ const movieSlice = createSlice({
 
 const movieReducer = movieSlice.reducer;
 
-export const {addGenre,removeActiveGenres} = movieSlice.actions;
+export const {addGenre,removeActiveGenres,cancelVideos} = movieSlice.actions;
 
 export default movieReducer;
