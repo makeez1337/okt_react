@@ -1,8 +1,8 @@
 import React from 'react';
+import {useSelector} from "react-redux";
 
 import logo from '../../images/user_logo/user_logo.png'
 import css from './UserInfo.module.css'
-import {useSelector} from "react-redux";
 
 const UserInfo = () => {
 

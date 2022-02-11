@@ -13,6 +13,9 @@ const initialState = {
     filteredGenresStatus: null,
     filteredGenresErr: null,
     videos: [],
+    videosStatus: null,
+    videosErr: null,
+    videoURL: null,
     totalPages: 500,
     totalFilteredPages: null
 }
@@ -75,6 +78,9 @@ const movieSlice = createSlice({
             })
             state.activeGenres = state.genres.filter(genre => genre.isActive);
         },
+        addVideoURL: (state, action) => {
+            state.videoURL = action.payload;
+        },
         removeActiveGenres: (state) => {
             state.activeGenres = [];
             state.totalFilteredPages = null;
@@ -83,12 +89,13 @@ const movieSlice = createSlice({
             })
         },
         cancelVideos: (state) => {
+            state.videoURL = null;
             state.videos = [];
         }
     },
     extraReducers: {
 
-        [getMovieThunk.pending]: (state, action) => {
+        [getMovieThunk.pending]: (state) => {
             state.moviesStatus = 'loading';
             state.moviesErr = null;
         },
@@ -120,7 +127,7 @@ const movieSlice = createSlice({
             state.genresErr = action.payload;
         },
 
-        [getMoviesByGenre.pending]: (state, action) => {
+        [getMoviesByGenre.pending]: (state) => {
             state.totalFilteredPages = null
             state.filteredGenresStatus = 'loading';
             state.movies = [];
@@ -138,14 +145,24 @@ const movieSlice = createSlice({
             state.filteredGenresErr = action.payload;
         },
 
+        [getVideoThunk.pending]: (state) => {
+            state.videos = [];
+            state.videosStatus = 'loading';
+        },
         [getVideoThunk.fulfilled]: (state, action) => {
+            state.videosStatus = 'fulfilled';
             state.videos = action.payload.results;
-        }
+        },
+        [getVideoThunk.rejected]: (state, action) => {
+            state.videos = [];
+            state.videosStatus = 'rejected';
+            state.videosErr = action.payload;
+        },
     }
 });
 
 const movieReducer = movieSlice.reducer;
 
-export const {addGenre, removeActiveGenres, cancelVideos} = movieSlice.actions;
+export const {addGenre, removeActiveGenres, cancelVideos,addVideoURL} = movieSlice.actions;
 
 export default movieReducer;

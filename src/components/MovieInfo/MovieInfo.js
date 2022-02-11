@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useLocation, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import {Header} from "../Header/Header";
 import css from './MovieInfo.module.css'
 import {getGenreNames} from "../../utils";
-import {getVideoThunk} from "../../store";
+import {addVideoURL, getVideoThunk} from "../../store";
 
 const MovieInfo = () => {
 
@@ -13,11 +13,8 @@ const MovieInfo = () => {
     const dispatch = useDispatch();
     const {movieId} = useParams();
 
-    const {videos} = useSelector(prev => prev['movieReducer']);
+    const {videos, videosStatus, videosErr, videoURL} = useSelector(prev => prev['movieReducer']);
     const {darkMode} = useSelector(state => state['darkmodeReducer']);
-
-    const [videoURL, setVideoURL] = useState(null);
-
 
     const {
         movie: {
@@ -57,18 +54,16 @@ const MovieInfo = () => {
 
     const genreNames = genresNamesArr.toString();
 
+    useEffect(() => {
+        dispatch(getVideoThunk({id}));
+    }, [movieId]);
 
     useEffect(() => {
-
-        dispatch(getVideoThunk({id}));
-
         if (videos.length) {
-            const YOUTUBE_KEY = videos[0]?.key;
-            setVideoURL(`https://www.youtube.com/embed/${YOUTUBE_KEY}`);
+            const YOUTUBE_KEY = videos[0].key;
+            dispatch(addVideoURL(`https://www.youtube.com/embed/${YOUTUBE_KEY}`));
         }
-
-    }, [+movieId, videos.length]);
-
+    }, [movieId,videosStatus])
 
     return (
         <div>
@@ -120,6 +115,8 @@ const MovieInfo = () => {
                         </span>
                         </span>
                     </div>
+                    {videosStatus === 'loading' ? <h2 style={{color: 'white'}}>Loading...</h2> : ''}
+                    {videosStatus === 'rejected' ? <h2 style={{color: 'white'}}>{videosErr}</h2> : ''}
 
                     <div className={css.iframe_wrap}>
                         <iframe width="700" height="500" src={videoURL}

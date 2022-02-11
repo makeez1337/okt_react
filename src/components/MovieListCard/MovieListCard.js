@@ -1,17 +1,20 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 import {PosterPreview} from "../PosterPreview/PosterPreview";
 import css from './MovieListCard.module.css'
 import star from '../../images/star_rating/star.png'
 import {movieCardPreview} from "../../utils";
-import {useSelector} from "react-redux";
+import {cancelVideos} from "../../store";
 
 const MovieListCard = ({movie}) => {
 
     const [style, setStyle] = useState({display: 'none'});
 
     const [brightness, setBrightness] = useState({filter: 'brightness(100%)'});
+
+    const dispatch = useDispatch();
 
     const {genres} = useSelector(prev => prev['movieReducer']);
     const {darkMode} = useSelector(state => state['darkmodeReducer']);
@@ -38,11 +41,14 @@ const MovieListCard = ({movie}) => {
     const brightnessDark = () => setBrightness({filter: 'brightness(40%)', height: '100%'});
     const brightnessDefault = () => setBrightness({filter: 'brightness(100%)'});
 
+    const onClick = ()=>{dispatch(cancelVideos())};
+
     return (
         <Link state={{movie,genres}} to={`/movie/${id}`}>
             <div className={css.movie_card}
                  onMouseEnter={onMouseEnter}
                  onMouseLeave={onMouseLeave}
+                 onClick={onClick}
             >
                 <span className={darkMode ? `${css.title_style} ${css.darkMode}` :`${css.title_style}`}>{original_title}</span>
                 <div style={brightness}><PosterPreview movie={movie} img={imgURL}/></div>
