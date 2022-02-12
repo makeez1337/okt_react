@@ -121,10 +121,11 @@ const MovieInfo = () => {
                     {videosStatus === 'rejected' ? <h2 style={{color: 'white'}}>{videosErr}</h2> : ''}
 
                     <div className={css.iframe_wrap}>
-                        <iframe width="700" height="500" src={videoURL}
-                                frameBorder="0" allowFullScreen/>
+                        {videos[0]?.key &&
+                            <iframe width="700" height="500" src={videoURL}
+                                 frameBorder="0" allowFullScreen/>}
                     </div>
-                    {!videos.length && <h1>This film has no trailer</h1>}
+                    {videosStatus === 'fulfilled' && !videos.length && <h1>This film has no trailer</h1>}
                 </div>
             </div>
         </div>
