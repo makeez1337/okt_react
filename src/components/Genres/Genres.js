@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 
 import {getGenresThunk, getMoviesByGenre} from "../../store";
 import movieReducer from "../../store/slices/movie.slice";
@@ -17,6 +17,7 @@ const Genres = () => {
     const {darkMode} = useSelector(state => state['darkmodeReducer']);
 
     const {pageId} = useParams();
+    const [searchParams] = useSearchParams();
 
     useEffect(() => {
         dispatch(getGenresThunk());
@@ -40,7 +41,15 @@ const Genres = () => {
 
             dispatch(getMoviesByGenre({genres: activeGenreIdsStr, page: +pageId}));
 
-            navigate(`/movie/page=${pageId}/with_genres=${activeGenreNamesStr}`);
+            searchParams.set('with_genres', activeGenreNamesStr);
+            let search_params;
+
+            for (const entry of searchParams.entries()) {
+                const [param, value] = entry;
+                search_params = param.concat(`=${value}`);
+            }
+
+            navigate(`/movie/page=${pageId}?${search_params}`);
         }
     }, [activeGenres.length, +pageId,genresStatus,activeGenres])
 
