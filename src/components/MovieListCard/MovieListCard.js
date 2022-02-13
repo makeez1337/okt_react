@@ -19,7 +19,6 @@ const MovieListCard = ({movie}) => {
     const {genres} = useSelector(prev => prev['movieReducer']);
     const {darkMode} = useSelector(state => state['darkmodeReducer']);
 
-
     const {
         original_title,
         id,
@@ -29,7 +28,6 @@ const MovieListCard = ({movie}) => {
         poster_path,
         overview
     } = movie;
-
 
     const substrOverview = movieCardPreview(overview);
 

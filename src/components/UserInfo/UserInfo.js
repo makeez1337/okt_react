@@ -10,6 +10,7 @@ const UserInfo = () => {
 
     return (
         <div className={css.user_container}>
+
             <span className={darkMode ? `${css.dark_text_style}`:`${css.text_style}`}>UserName</span>
             <img className={css.logo_size} src={logo} alt="UserLogo"/>
         </div>

@@ -16,8 +16,6 @@ const Header = () => {
 
     const {darkMode} = useSelector(state => state['darkmodeReducer']);
 
-
-
     return (
         <div className={darkMode ? `${css.header_style_dark}`:`${css.header_style}`}>
 
