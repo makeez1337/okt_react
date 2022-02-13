@@ -12,7 +12,7 @@ const Genres = () => {
 
     const dispatch = useDispatch();
 
-    const {genres, activeGenres,genresStatus,genresErr,movies} = useSelector(state => state['movieReducer']);
+    const {genres, activeGenres, genresStatus, genresErr, movies} = useSelector(state => state['movieReducer']);
 
     const {darkMode} = useSelector(state => state['darkmodeReducer']);
 
@@ -51,7 +51,7 @@ const Genres = () => {
 
             navigate(`/movie/page=${pageId}?${search_params}`);
         }
-    }, [activeGenres.length, +pageId,genresStatus,activeGenres])
+    }, [activeGenres.length, +pageId, genresStatus, activeGenres])
 
 
     return (
