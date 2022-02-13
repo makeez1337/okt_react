@@ -11,7 +11,6 @@ function App() {
             <Route index element={<Navigate to={'movie/page=1'}/>}/>
             <Route path={'/movie/page=:pageId'} element={<MoviesPage/>}/>
 
-            {/*<Route path={'/movie/page=:pageId?with_genres=:genres'} element={<MoviesPage/>}/>*/}
             <Route path={'/movie/page=:pageId?:queryParams'} element={<MoviesPage/>}/>
 
             <Route path={'/movie/:movieId'} element={<MovieInfo/>}/>
